@@ -1,14 +1,14 @@
-// В вашем компоненте AudioControler
-
 import "./Player.css";
-import { useState } from "react";
+import React,{useRef, useEffect} from 'react';
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { usePlaylist } from "./PlaylistContext";
 
+
 export default function AudioControler() {
-  const { playlist } = usePlaylist();
-  const [trackIndex, setTrackIndex] = useState(0);
+  const { playlist, trackIndex } = usePlaylist();
+  const { setTrackIndex, setIsPlaying, isPlaying } = usePlaylist();
+  const player = useRef();
 
   const handleClickPrevious = () => {
     setTrackIndex((currentTrack) =>
@@ -22,11 +22,16 @@ export default function AudioControler() {
     );
   };
 
-    console.log("playlist", playlist);
+  useEffect(() => {
+    if (isPlaying) {
+      player.current.audio.current.play();
+    } else {
+      player.current.audio.current.pause();
+    }
 
-  // Проверяем, задан ли плейлист. Если нет, возвращаем нективный плеер.
+  }, [isPlaying]);
+
   if (!playlist || playlist.length === 0) {
-    console.log("no playlist");
     return <div className="controler">
             <AudioPlayer
             style={{color: "white", background: "#FFFFFF" }}
@@ -37,28 +42,28 @@ export default function AudioControler() {
             onClickPrevious={handleClickPrevious}
             onClickNext={handleClickNext}
             onEnded={handleClickNext}
+            ref={player}
             />
             </div>;
   }
 
-  // Если плейлист задан, рендерим плеер
   return (
-    console.log("hereeeeeeeeeeeee"),
-    console.log("playlist", playlist),
-    console.log(trackIndex),
     <div className="controler">
-      <AudioPlayer
-        style={{ borderRadius: "1rem", color: "black", background: "#FFFFFF"  }}
-        autoPlay
-        src={playlist[trackIndex].audioSrc}
-        onPlay={(e) => console.log("onPlay")}
-        showSkipControls={true}
-        showJumpControls={false}
-        header={`${playlist[trackIndex].title}`}
-        onClickPrevious={handleClickPrevious}
-        onClickNext={handleClickNext}
-        onEnded={handleClickNext}
-      />
+    <AudioPlayer
+      style={{ borderRadius: "1rem", color: "black", background: "#FFFFFF" }}
+      playing={isPlaying}
+      src={playlist[trackIndex].audioSrc}
+      onCanPlay={false}
+      onPlay={() => setIsPlaying(true)}
+      onPause={() => setIsPlaying(false)}
+      showSkipControls={true}
+      showJumpControls={false}
+      header={`${playlist[trackIndex].title}`}
+      onClickPrevious={handleClickPrevious}
+      onClickNext={handleClickNext}
+      onEnded={handleClickNext}
+      ref={player}
+    />
     </div>
   );
 }

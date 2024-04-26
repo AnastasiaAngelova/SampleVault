@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Song } from '../Song/Song.jsx'
+import { SongTemplate } from '../../SongTemplate/SongTemplate'
 import './Cardkit.css'
 
 const Cardkit = (props) => {
@@ -11,7 +11,7 @@ const Cardkit = (props) => {
     <div className="cardkit-container">
         {console.log('tS ',props)}
         {props.trendSounds.map((sound, index) => (
-                    <Song playlist={props} number={index+1} {...sound} />
+                    <SongTemplate playlist={props} number={index+1}  {...sound} isDownload={1} isDelete={false}   />
                 ))}
         
     </div>

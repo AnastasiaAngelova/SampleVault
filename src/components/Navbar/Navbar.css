@@ -1,0 +1,58 @@
+.navbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 5px 10px; */
+    padding-bottom: 5px;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+
+
+.text {
+    margin-right: 10px; /* Adjust as needed */
+
+}
+/* 
+.search-box {
+    display: flex;
+    height: 40px;
+    width: 350px;
+    background-color: #5a5a5a;
+    border-radius: 30px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+}
+
+input[type="text"] {
+    color: white;   
+    font-size: 15px;
+    background-color: transparent; Прозрачный фон
+    border: none; Убираем границу
+    outline: none; Убираем обводку при фокусе
+    margin-left: 10px;
+
+    outline: none;
+} */
+
+/* input[type="text"]:focus {
+    border-color: #007bff; 
+} */
+
+@media (max-width: 265px) {
+    .navbar {
+        height: 150px;
+        width: 100vw;
+        flex-direction: column; /* Меняем направление flex контейнера на колонку */
+        align-items: flex-start; /* Выравниваем элементы по левому краю */
+    }
+
+    .right-section {
+        margin-top: 100; /* Убираем отступ между left-section и right-section */
+        margin-left: auto; /* Перемещаем right-section вправо */
+    }
+}
+

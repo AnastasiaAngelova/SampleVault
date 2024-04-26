@@ -1,0 +1,71 @@
+.dropdown-text{
+width: 106px;
+height: 18px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+
+color: #989898;
+color: color(display-p3 0.596 0.596 0.596);
+}
+
+.dropdown-shevron-wrapper {
+width: 24px;
+height: 24px;
+}
+
+.generation-dropdown {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    gap: 10px;
+
+    width: 160px;
+    height: 60px;
+
+    /* Color/Base/White */
+    background: #FFFFFF;
+    background: color(display-p3 1.000 1.000 1.000);
+    /* Color/Accent/Black/400 */
+    border: 1px solid #989898;
+    border: 1px solid color(display-p3 0.596 0.596 0.596);
+    border-radius: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #989898;
+    color: color(display-p3 0.596 0.596 0.596);
+
+}
+
+.generation-dropdown:focus {
+    outline: none; /* Убираем обводку при фокусировке */
+}
+
+.generation-dropdown select {
+/* Убираем стандартные стрелки */
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+/* Добавляем своё изображение в качестве фона */
+background-image: none; /* Убираем фоновое изображение */
+background-repeat: no-repeat;
+background-position: right center; /* Положение изображения (правый центр) */
+padding-right: 0; /* Устанавливаем дополнительное правое заполнение для изображения */
+
+  }
+  
+  

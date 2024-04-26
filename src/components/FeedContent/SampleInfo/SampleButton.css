@@ -1,0 +1,12 @@
+.song-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+.song-image-button-active {
+width: 60px;
+height: 60px;
+border-radius: 10px;
+opacity: 70%;
+}

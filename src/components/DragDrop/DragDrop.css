@@ -1,0 +1,66 @@
+.generation-drag-drop-img-wrapper{
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px 10px;
+    gap: 10px;
+    isolation: isolate;
+
+    width: 760px;
+    height: 146px;
+
+    /* Color/Base/White */
+    background: #FFFFFF;
+    background: color(display-p3 1.000 1.000 1.000);
+    /* Color/Accent/Black/400 */
+    border: 1px dashed #989898;
+    border: 1px dashed color(display-p3 0.596 0.596 0.596);
+    border-radius: 10px;
+}
+
+.generation-drag-drop-img-text{
+    width: 740px;
+    height: 18px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+
+    /* Color/Accent/Black/400 */
+    color: #989898;
+    color: color(display-p3 0.596 0.596 0.596);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    z-index: 0;
+}
+
+.generation-drag-drop-img-icon{
+    /* ph:images-light */
+
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 350px;
+    top: 63px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+}
+
+.generation-drag-drop-img-wrapper.drag-over {
+    filter: brightness(50%); /* Используем фильтр для затемнения элемента */
+  }
+

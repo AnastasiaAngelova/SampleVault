@@ -1,0 +1,286 @@
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* textfield / search */
+
+body {
+    background-color: #F8F8F8; /* Замените на нужный вам цвет */
+}
+
+/* Auto layout
+.textfield {
+     Auto layout 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 589px;
+    height: 40px;
+
+     Color/Accent/Black/700 
+    background: #5A5A5A;
+    background: color(display-p3 0.353 0.353 0.353);
+    border-radius: 30px;
+
+    Inside auto layout
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+Style the input
+.textfield input[type="text"] {
+    border: none;
+    background: transparent;
+    color: white;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 16px;
+}
+
+Optional: Style the placeholder text
+.textfield input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+Optional: Style the input on focus
+.textfield input[type="text"]:focus {
+    Add styles for focus state
+}
+
+.header {
+    Navbar
+
+box-sizing: border-box;
+
+Auto layout
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 423px;
+
+position: absolute;
+width: 1406px;
+height: 80px;
+left: 10px;
+top: 19px;
+
+Color/Accent/Black/800
+border-bottom: 1px solid #444444;
+border-bottom: 1px solid color(display-p3 0.267 0.267 0.267);
+
+}
+
+@media (max-width: 991px) {
+    .header {
+    max-width: 100%;
+    flex-wrap: wrap;
+    }
+}
+
+.logo-container {
+    logo / img
+
+    Auto layout
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+
+    width: 60px;
+    height: 60px;
+
+
+    Inside auto layout
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+.logo {
+    Logo
+
+    Auto layout
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    width: 295px;
+    height: 60px;
+
+
+    Inside auto layout
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.logo-img{
+    width: 33.98px; Ширина изображения
+    height: 31.52px; Высота изображения
+    display: flex;
+}
+
+.title {
+Logo / text
+
+Auto layout
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 207px;
+height: 59px;
+
+
+Inside auto layout
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+SampleVault
+
+width: 207px;
+height: 39px;
+
+font-family: 'Montserrat' -apple-system, Roboto, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 39px;
+identical to box height
+
+color: #FFFFFF;
+color: color(display-p3 1.000 1.000 1.000);
+
+
+Inside auto layout
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+    
+.bold {
+font-weight: 600; Полужирный (semibold)
+}
+
+.regular {
+font-weight: 400; Обычный (regular)
+}
+
+.nav {
+        Frame 15
+
+    Auto layout
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 679px;
+    height: 80px;
+
+
+    Inside auto layout
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+@media (max-width: 991px) {
+    .nav {
+    flex-wrap: wrap;
+    white-space: initial;
+    }
+}
+
+.search-container {
+textfield / search
+
+Auto layout
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 589px;
+height: 40px;
+
+Color/Accent/Black/700
+background: #5A5A5A;
+background: color(display-p3 0.353 0.353 0.353);
+border-radius: 30px;
+
+Inside auto layout
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+
+}
+
+
+
+@media (max-width: 991px) {
+    .search-container {
+    flex-wrap: wrap;
+    white-space: initial;
+    }
+}
+
+.search-icon {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 24px;
+}
+
+.search-text {
+    font-family: Montserrat, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+}
+
+@media (max-width: 991px) {
+    .search-text {
+    max-width: 100%;
+    }
+}
+
+.profile-image {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 40px;
+    border-radius: 50%;
+} */

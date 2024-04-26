@@ -1,0 +1,14 @@
+.logo-section {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.logo-text {
+    font-family: 'Montserrat';
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39.01px;
+    text-align: left;
+
+}

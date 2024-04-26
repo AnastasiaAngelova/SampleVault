@@ -1,0 +1,42 @@
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+
+.icon-right {
+    /* padding: 5px; */
+    width: 80px;
+    height: 80px;
+    /* margin: 0 20px; */
+    
+}
+
+.chevron {
+    padding: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.imgd {
+    /* padding: px; */
+    /* background: white */
+    width: 104px;
+    height: 80px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    align-items: center;
+    margin: 0px 30px;
+    background: white;
+}

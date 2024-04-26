@@ -9,34 +9,30 @@ import AudioControler from "./components/Player/Player";
 import Feed from './containers/Feed/Feed'
 import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
+import Signup from './containers/Signup/Signup'
 import ReactAudioPlayer from 'react-audio-player';
 
 function App() {
-  return (
-    <PlaylistProvider>
-    <Router>
-        <Navbar />
-          <div className={"main-page"}>
-            <LeftMenu />
-            <Routes>
-              <Route exact path="/" element={<Navigate to="/feed" />} />
-              <Route path="/feed" element={<Feed />} />
-              <Route path="/generate" element={<SoundGen />} />
-              <Route path="/sound_collection" element={<SoundCollection />} /> 
-              {/*    <Route path="/tracks" element={TO BE} />
-                  <Route path="/upload" element={TO BE} />
-                  <Route path="/daw" element={TO BE} />
-                  <Route path="/profile" element={TO BE} />
-              */}
-            </Routes> 
-          </div>
+    return (
+        <PlaylistProvider>
+            <Router>
+                <Navbar />
+                <div className={"main-page"}>
+                    <LeftMenu />
+                    <Routes>
+                        <Route exact path="/" element={<Navigate to="/feed" />} />
+                        <Route path="/feed" element={<Feed />} />
+                        <Route path="/generate" element={<SoundGen />} />
+                        <Route path="/sound_collection" element={<SoundCollection />} />
+                        <Route exact path="/signup" element={<Signup />} />
+                    </Routes>
+                </div>
 
-        {/* <Player /> */}
-        <AudioControler />
-
-    </Router>
-    </PlaylistProvider>
-  );
+                {/* <Player /> */}
+                <AudioControler />
+            </Router>
+        </PlaylistProvider>
+    );
 }
 
 export default App;

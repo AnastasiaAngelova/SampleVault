@@ -1,7 +1,7 @@
 // В вашем компоненте AudioControler
 
 import "./Player.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { usePlaylist } from "./PlaylistContext";

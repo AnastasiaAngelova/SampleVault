@@ -9,6 +9,8 @@ import AudioControler from "./components/Player/Player";
 import Feed from './containers/Feed/Feed'
 import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
+import UploadPage from './containers/UploadPage/UploadPage';
+
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
               <Route path="/feed" element={<Feed />} />
               <Route path="/generate" element={<SoundGen />} />
               <Route path="/sound_collection" element={<SoundCollection />} /> 
+              <Route path="/upload" element={<UploadPage />} /> 
+
               {/*    <Route path="/tracks" element={TO BE} />
                   <Route path="/upload" element={TO BE} />
                   <Route path="/daw" element={TO BE} />

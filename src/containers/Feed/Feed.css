@@ -136,7 +136,7 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  word-break: break-all; /* Добавлено свойство для переноса текста */
+  word-break: break-all; /* Добавлено свой dство для переноса текста */
 }
 
   .kirkorov:hover {

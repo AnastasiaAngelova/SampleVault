@@ -5,7 +5,22 @@ import { SampleButton } from '../SampleInfo/SampleButton'
 
 
 export function Song(props) {
-  
+  const handleDownload = () => {
+    fetch(props.audioSrc.split("?")[0])
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${props.title}.wav`);
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      })
+      .catch(error => console.error('Ошибка при загрузке файла:', error));
+  };
+
+
   console.log(props)
 
   const { setPlaylist, setTrackIndex, setIsPlaying, isPlaying, trackIndex } = usePlaylist();
@@ -45,6 +60,7 @@ export function Song(props) {
           src={'icons/download.svg'}
           alt="download01I114"
           className="song-control-img"
+          onClick={handleDownload}
         />
       </div>
     </div>

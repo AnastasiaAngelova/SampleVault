@@ -1,29 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import "./Song.css"
-import { usePlaylist } from "../../Player/PlaylistContext"
-import { SampleButton } from '../SampleInfo/SampleButton'
+import React from 'react';
+import "./SongTemplate.css"
+import { usePlaylist } from "../Player/PlaylistContext"
 
-
-export function Song(props) {
-  const handleDownload = () => {
-    fetch(props.audioSrc.split("?")[0])
-      .then(response => response.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `${props.title}.wav`);
-        document.body.appendChild(link);
-        link.click();
-        link.parentNode.removeChild(link);
-      })
-      .catch(error => console.error('Ошибка при загрузке файла:', error));
-  };
-
-
-  console.log(props)
-
-  const { setPlaylist, setTrackIndex, setIsPlaying, isPlaying, trackIndex } = usePlaylist();
+export function SongTemplate(props, isDelete, isDownload, isCollection = null) {
+  
+  const { setPlaylist, setTrackIndex, setIsPlaying, isPlaying, playlist, trackIndex } = usePlaylist();
 
   const updatePlaylist = (playlist, trackIndex) => {
     const newPlaylist = playlist; // Новый плейлист, который нужно передать
@@ -46,7 +27,7 @@ export function Song(props) {
         <span className="song-number-text">{props.number}</span>
       </div>
       <div className="song-info" >
-        <SampleButton imageUrl={props.imageUrl}  />
+        <img src={props.imageUrl} alt={props.imageUrl} className="song-image" />
         <div className="song-details">
           <h2 className="song-title">{props.title}</h2>
           <p className="song-description">{props.author}</p>
@@ -56,12 +37,20 @@ export function Song(props) {
           alt="star01I114"
           className="song-control-img"
         />
-        <img
+        
+        {console.log("is", isDownload, isDelete)}
+
+        {isDownload && <img
           src={'icons/download.svg'}
           alt="download01I114"
           className="song-control-img"
-          onClick={handleDownload}
-        />
+        />}
+
+        {isDelete && <img 
+        src={'icons/trash.svg'}
+          alt="download01I114"
+          className="song-control-img"
+        />}
       </div>
     </div>
   );

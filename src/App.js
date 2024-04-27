@@ -9,7 +9,6 @@ import AudioControler from "./components/Player/Player";
 import Feed from './containers/Feed/Feed'
 import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
-import ReactAudioPlayer from 'react-audio-player';
 
 function App() {
   return (

@@ -14,7 +14,7 @@ const Drop = ({onMenuClick}) => {
     };
 
     return (
-        <div>
+        <div className="dr">
             <button className="menu-button" onClick={() => setOpen(!isOpen)}>
                 <div className="left">
                 <span className='txt'>Создать</span>

@@ -1,0 +1,73 @@
+.sample-gen-text-recent-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 1111px;
+    height: 49px;
+
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.sample-gen-text-recent{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+
+    /* Color/Base/Black */
+    color: #1A1A1A;
+    color: color(display-p3 0.102 0.102 0.102);
+}
+
+.sample-gen-body-recent{
+/* Body / tracks - equalizer */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+align-content: flex-start;
+padding-top: 30px;
+gap: 10px 40px;
+
+position: top;
+width: 1112px;
+height: 499px;
+left: 464px;
+top: 361px;
+
+
+}
+
+.loader {
+    /* Стили для индикатора загрузки */
+    border: 16px solid #f3f3f3; /* Светлый серый */
+    border-top: 16px solid #3498db; /* Синий */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+    opacity: 0; /* Начальная прозрачность 0 */
+    transition: opacity 8.5s ease, transform 1115.5s ease; /* Плавные анимации для прозрачности и translateY */
+    transform: translateY(100%); /* Начальное положение внизу */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader.show {
+    opacity: 1; /* Прозрачность 1 при отображении */
+    transform: translateY(0); /* Поднимаем вверх */
+}
+

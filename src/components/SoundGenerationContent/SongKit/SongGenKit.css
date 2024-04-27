@@ -1,0 +1,19 @@
+.songgen-kit-container{
+/* Body / tracks - equalizer */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+align-content: flex-start;
+padding: 0px;
+gap: 10px 40px;
+
+width: 1112px;
+height: 499px;
+left: 464px;
+top: 361px;
+
+
+}

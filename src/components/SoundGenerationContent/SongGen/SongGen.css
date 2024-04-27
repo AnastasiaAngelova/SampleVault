@@ -1,0 +1,246 @@
+.song-gen-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 40px;
+
+    width: 1111px;
+    height: 80px;
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.song-gen-container:hover {
+    /* Frame 160 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 40px;
+
+width: 1111px;
+height: 80px;
+
+/* Color/Accent/Black/100 */
+background: #D9D9D9;
+background: color(display-p3 0.851 0.851 0.851);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}
+
+.song-gen-number{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 34px;
+    height: 44px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.song-gen-number-text{
+    width: 8px;
+    height: 24px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    /* Color/Base/Black */
+    color: #1A1A1A;
+    color: color(display-p3 0.102 0.102 0.102);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.song-gen-info{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    width: 291px;
+    height: 80px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+
+}
+
+.song-gen-details{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 177px;
+    height: 60px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.song-gen-title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 150%;
+    /* or 22px */
+
+    /* Color/Base/Black */
+    color: #1A1A1A;
+    color: color(display-p3 0.102 0.102 0.102);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.song-gen-control-img{
+width: 24px;
+height: 24px;
+
+border-radius: 5px;
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+}
+
+.song-gen-control-img:hover {
+    background-color:
+    #838383; /* Слегка затемняем при наведении */
+}
+
+.song-gen-control-img:active {
+    background-color:
+    #5A5A5A; /* Сильно затемняем при нажатии */
+}
+
+.song-gen-equalizer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 5px;
+
+    width: 355px;
+    height: 30px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.song-gen-button-wrapper{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 168px;
+height: 44px;
+
+border: none;
+
+/* Color / Accent / Blue / 300 */
+background: #C3DEFF;
+background: color(display-p3 0.784 0.867 0.992);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+}
+
+.song-gen-button-wrapper:active {
+    /* Darken the background color upon click */
+    background: #a8c5e2; /* You can adjust the shade as per your preference */
+  }
+
+.song-gen-button-img{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px;
+    gap: 10px;
+
+    width: 24px;
+    height: 24px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.song-gen-button-text{
+    /* Опубликовать */
+
+width: 114px;
+height: 18px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+
+color: #000000;
+color: color(display-p3 0.000 0.000 0.000);
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}

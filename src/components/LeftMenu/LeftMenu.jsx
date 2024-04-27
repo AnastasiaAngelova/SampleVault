@@ -26,12 +26,12 @@ const LeftMenu = () => {
                 </div>
                 <span className="left-selection_txt">Звуки</span>
             </div>
-            <div className="left-selection_button" onClick={() => onMenuClick('/tracks')}>
+            {/* <div className="left-selection_button" onClick={() => onMenuClick('/tracks')}>
                 <div className="left-selection_button_img">
                     <img src={"icons/tracks.svg"} alt="search" />
                 </div>
                 <span className="left-selection_txt">Треки</span>
-            </div>
+            </div> */}
         </div>
     );
 };

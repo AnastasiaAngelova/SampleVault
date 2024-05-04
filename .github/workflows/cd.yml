@@ -3,7 +3,7 @@ name: build-n-deploy
 on:
   push:
     branches:
-      - *
+      - "*"
 
 jobs:
   build-n-deploy:

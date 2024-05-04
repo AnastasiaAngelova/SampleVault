@@ -1,26 +1,27 @@
 // import React from 'react';
 import React, { useState, useEffect } from 'react';
-import "./Signup.css"
-import {Link, NavLink, useNavigate} from "react-router-dom";
+import "./Login.css"
+import {NavLink, useNavigate} from "react-router-dom";
 
-const Signup = () =>  {
-    const redirectToLogin = () => {
-        window.location.href = '/login';
+const Login = () =>  {
+    const redirectToSignup = () => {
+        window.location.href = '/signup';
     }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const [signupError, setSignupError] = useState(false);
+    const [loginError, setLoginError] = useState(false);
     const [usernameColor, setUsernameColor] = useState("");
     const [passwordColor, setPasswordColor] = useState("");
+
 
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    const handleSignup = async () => {
+    const handleLogin = async () => {
         try {
-            setSignupError(false);
+            setLoginError(false);
             setUsernameError(false);
             setPasswordError(false);
             setUsernameColor("#ddd");
@@ -37,7 +38,7 @@ const Signup = () =>  {
                 return
             }
 
-            const response = await fetch('https://samplevault.ru/api/v1/auth/signup', {
+            const response = await fetch('https://samplevault.ru/api/v1/auth/login', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -47,22 +48,22 @@ const Signup = () =>  {
             });
 
             if (response.ok) {
-                console.log("Signup successful!");
+                console.log("Login successful!");
             }
 
-            console.log('signup status: ', response.status)
+            console.log('login status: ', response.status)
 
             if (response.status === 201) {
                 window.location.href = '/';
             }
-            if (response.status === 409) {
-                setSignupError(true);
+            if (response.status === 404) {
+                setLoginError(true);
                 setUsernameColor("red");
                 setPasswordColor("red");
             }
 
         } catch (error) {
-            console.log("signup catch error: ", error)
+            console.log("login catch error: ", error)
         }
     };
 
@@ -70,25 +71,25 @@ const Signup = () =>  {
         <div className="container">
             <input type="checkbox" id="check"/>
             <div className="login form">
-                <header>Зарегистрироваться</header>
+                <header>Войти</header>
                 <form action="#">
                     <input type="username" placeholder="Введите логин" value={username}
                            onChange={(e) => setUsername(e.target.value)} style={{borderColor: usernameColor}}/>
                     <input type="password" placeholder="Введите пароль" value={password}
                            onChange={(e) => setPassword(e.target.value)} style={{borderColor: passwordColor}}/>
-                    {signupError && <p style={{color: "red"}}>Такой логин уже существует</p>}
+                    {loginError && <p style={{ color: "red" }}>Пароль или логин неверный</p>}
                     {usernameError && <p style={{ color: "red" }}>Логин должен состоять от 4 до 15 символов</p>}
                     {passwordError && <p style={{ color: "red" }}>Пароль должен состоять от 4 до 15 символов</p>}
-                    <input type="button" onClick={handleSignup} className="button" value="Зарегистрироваться"/>
+                    <input type="button" onClick={handleLogin} className="button" value="Войти"/>
                 </form>
                 <div className="signup">
-               <span className="signup">Уже имеете аккаунт?
-                   <label onClick={redirectToLogin}>Войти</label>
-                </span>
+                    <span className="signup">Нет аккаунта?
+                        <label onClick={redirectToSignup}>Зарегистрироваться</label>
+                    </span>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Signup;
+export default Login;

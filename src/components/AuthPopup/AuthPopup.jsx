@@ -9,6 +9,14 @@ function AuthPopup() {
         window.history.back();
     }
 
+    const redirectToLogin = () => {
+        window.location.href = '/login';
+    }
+
+    const redirectToSignup = () => {
+        window.location.href = '/signup';
+    }
+
     return (
         <div className="popup-container">
             <div className="popup">
@@ -18,11 +26,11 @@ function AuthPopup() {
                 </div>
                 <div className="popup-body">
                     <p>У вас есть аккаунт?</p>
-                    <a href="#" className="btn btn-primary">Войти</a>
+                    <a className="btn btn-primary" onClick={redirectToLogin}>Войти</a>
                 </div>
                 <div className="popup-footer">
                     <p>У вас нет аккаунта?</p>
-                    <a href="#" className="btn btn-secondary">Зарегистрироваться</a>
+                    <a className="btn btn-secondary" onClick={redirectToSignup}>Зарегистрироваться</a>
                 </div>
             </div>
         </div>

@@ -19,10 +19,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm install
 
       - name: Build
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm run build
 
       - name: Copy dist folder to server

@@ -70,7 +70,7 @@ const SampleGen = () => {
             }
 
             if (response.status === 401) {
-                window.location.href = '/login';
+                window.location.href = '/auth_popup';
             }
         } catch (error) {
             console.error('Ошибка при получении списка сэмплов:', error);

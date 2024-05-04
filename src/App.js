@@ -9,10 +9,21 @@ import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
 import Login from './containers/Login/Login'
 import Signup from './containers/Signup/Signup'
+import AuthPopup from "./components/AuthPopup/AuthPopup";
 
 function App() {
     // Проверяем текущий путь
     const currentPath = window.location.pathname;
+
+    if (currentPath === "/auth_popup") {
+        return (
+            <PlaylistProvider>
+                <BrowserRouter>
+                    <AuthPopup />
+                </BrowserRouter>
+            </PlaylistProvider>
+        );
+    }
 
     if (currentPath === "/signup") {
         return (

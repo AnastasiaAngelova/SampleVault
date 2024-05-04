@@ -5,8 +5,9 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm install
-RUN npm install serve
 RUN export NODE_OPTIONS=--openssl-legacy-provider
+RUN npm uninstall -g serve
+RUN npm i -S serve
 RUN npm run build
 RUN serve -s build
 

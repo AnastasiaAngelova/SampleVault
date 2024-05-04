@@ -1,0 +1,35 @@
+name: build-n-deploy
+
+on:
+  push:
+    branches:
+      - *
+
+jobs:
+  build-n-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js v19.6.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: '19.6.0'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Copy dist folder to server
+        uses: easingthemes/ssh-deploy@v4.1.8
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          SOURCE: dist/
+          TARGET: /var/www/html

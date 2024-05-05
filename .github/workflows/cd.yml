@@ -51,6 +51,7 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd samplevault-front
+            git checkout frontend_base_litvak
             export NODE_OPTIONS=--openssl-legacy-provider
             docker stop my-react-app
             docker rm my-react-app

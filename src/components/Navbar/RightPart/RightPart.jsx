@@ -1,16 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import "./RightPart.css";
 import Drop from "../Drop/Drop"
+import CabinetDropdown from "../../CabinetDropdown/CabinetDropdown";
 
 
 const RightPart = () => {
     const [user, setUser] = useState([]);
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     const handleAuthUser = async (event) => {
         try {
             const response = await fetch('https://samplevault.ru/api/v1/auth', {
                 method: 'GET',
-                mode: 'cors'
+                mode: 'cors',
+                credentials: 'include',
             });
 
             if (!response) {
@@ -51,34 +59,47 @@ const RightPart = () => {
         handleAuthUser();
     }, []);
 
-    if (user.id === '') {
-        return (
-            <div className="right-section">
-                <Drop/>
-                <div className='ring'>
-                    <img className='w' src={"icons/ring.svg"} alt="Не авторизован"/>
-                </div>
-                <div className="imgd">
-                    <img className='icon-right' src={"icons/avatar.svg"} alt="Не авторизован"/>
-                    <img className='chevron' src={"icons/chevron/chevron-down.svg"} alt="Не авторизован"/>
-                </div>
+    return (
+        <div className="right-section">
+            <Drop/>
+            <div className='ring'>
+                {/*<img className='w' src={user.id !== '' ? "icons/ring.svg" : "icons/ring.svg"} alt={user.id !== '' ? "Авторизован" : "Не авторизован"}/>*/}
             </div>
-        );
-    }
-    if (user.id !== '') {
-        return (
-            <div className="right-section">
-                <Drop/>
-                <div className='ring'>
-                    <img className='w' src={"icons/ring.svg"} alt="Авторизован"/>
-                </div>
-                <div className="imgd">
-                    <img className='icon-right' src={"icons/avatar.svg"} alt="Авторизован"/>
-                    <img className='chevron' src={"icons/chevron/chevron-down.svg"} alt="Авторизован"/>
-                </div>
+            <div className="imgd">
+                <img className='icon-right' src={"icons/avatar.svg"} alt={user.id !== '' ? "Авторизован" : "Не авторизован"}/>
+                <img className='chevron' src={"icons/Chevron/chevron-down.svg"} onClick={toggleDropdown} alt={user.id !== '' ? "Авторизован" : "Не авторизован"}/>
+                {isDropdownOpen && <CabinetDropdown/>}
             </div>
-        );
-    }
+        </div>
+    );
+    // if (user.id === '') {
+    //     return (
+    //         <div className="right-section">
+    //             <Drop/>
+    //             <div className='ring'>
+    //                 {/*<img className='w' src={"icons/ring.svg"} alt="Не авторизован"/>*/}
+    //             </div>
+    //             <div className="imgd">
+    //                 <img className='icon-right' src={"icons/avatar.svg"} alt="Не авторизован"/>
+    //                 <img className='chevron' src={"icons/Chevron/chevron-down.svg"}  alt="Не авторизован"/>
+    //             </div>
+    //         </div>
+    //     );
+    // }
+    // if (user.id !== '') {
+    //     return (
+    //         <div className="right-section">
+    //             <Drop/>
+    //             <div className='ring'>
+    //                 {/*<img className='w' src={"icons/ring.svg"} alt="Авторизован"/>*/}
+    //             </div>
+    //             <div className="imgd">
+    //                 {/*<img className='icon-right' src={"icons/avatar.svg"} alt="Авторизован"/>*/}
+    //                 {/*<img className='chevron' src={"icons/chevron/chevron-down.svg"} alt="Авторизован"/>*/}
+    //             </div>
+    //         </div>
+    //     );
+    // }
 };
 
 export default RightPart;

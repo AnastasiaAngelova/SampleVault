@@ -2,6 +2,7 @@
 .right-section {
     display: flex;
     align-items: center;
+    padding-right: 25px;
 }
 
 
@@ -14,9 +15,10 @@
 }
 
 .chevron {
-    padding: 5px;
-    width: 24px;
-    height: 24px;
+    /*padding-left: 10px;*/
+    /*padding: 5px;*/
+    /*width: 48px;*/
+    /*height: 48px;*/
 }
 
 .imgd {
@@ -40,3 +42,70 @@
     margin: 0px 30px;
     background: white;
 }
+
+/*!* Chevron *!*/
+
+/*position: relative;*/
+/*width: 24px;*/
+/*height: 24px;*/
+
+
+
+/*!* chevron-up*/
+
+/*chevron, up, dropdown*/
+/**!*/
+
+/*position: absolute;*/
+/*left: 0%;*/
+/*right: 0%;*/
+/*top: 0%;*/
+/*bottom: 0%;*/
+
+
+
+/*!* Icon *!*/
+
+/*position: absolute;*/
+/*left: 25%;*/
+/*right: 25%;*/
+/*top: 37.5%;*/
+/*bottom: 37.5%;*/
+
+/*border: 2px solid #000000;*/
+
+
+/*!* State=chevron-down *!*/
+/*.chevron-down {*/
+/*    position: absolute;*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    left: 54px;*/
+/*    top: 20px;*/
+/*}*/
+
+
+/*!*!* chevron-down*!*/
+
+/*!*chevron, down, dropdown*!*/
+/*!**!*!*/
+
+/*!*position: absolute;*!*/
+/*!*left: 0%;*!*/
+/*!*right: 0%;*!*/
+/*!*top: 0%;*!*/
+/*!*bottom: 0%;*!*/
+
+
+
+/*!* Icon *!*/
+/*.chevron-icon {*/
+/*    position: absolute;*/
+/*    left: 25%;*/
+/*    right: 25%;*/
+/*    top: 37.5%;*/
+/*    bottom: 37.5%;*/
+
+/*    border: 2px solid #000000;*/
+/*    border: 2px solid color(display-p3 0.000 0.000 0.000);*/
+/*}*/

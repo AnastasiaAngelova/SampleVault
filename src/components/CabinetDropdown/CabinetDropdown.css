@@ -1,0 +1,42 @@
+.dropdown {
+    position: relative;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    padding: 10px;
+    /*padding-top: 100px;*/
+    background-color: #f0f0f0;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 0;
+    right: 100%; /* Изменено с left на right */
+    min-width: 200px; /* Увеличиваем ширину списка */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.dropdown-option {
+    display: flex; /* Делаем элемент flex-контейнером */
+    align-items: center; /* Выравниваем элементы по центру вертикально */
+    padding: 15px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #f9f9f9;
+}
+
+.dropdown-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Добавляем отступ справа для разделения изображения и текста */
+}
+
+.dropdown-txt {
+    font-size: 14px; /* Добавляем размер шрифта по вашему желанию */
+}
+

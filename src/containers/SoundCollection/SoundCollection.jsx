@@ -34,7 +34,6 @@ const SoundCollection = () =>  {
         setTrackIndex(trackIndex);
     };
 
-
     const handleDownload = (audioSrc, title) => {
         fetch(audioSrc.split("?")[0])
           .then(response => response.blob())
@@ -140,69 +139,110 @@ const SoundCollection = () =>  {
         handleGetAllSamples();
     }, []);
 
-    const filterSamples = (samples) => {
-        return samples.filter((sample) => {
-            const matchesInstrument =
-            selectedInstrument === '' || sample.musical_instrument === selectedInstrument;
-            const matchesGenre = selectedGenre === '' || sample.genre === selectedGenre;
-            const matchesMood = selectedMood === '' || sample.mood === selectedMood;
-            const matchesTonality = selectedTonality === '' || sample.tonality === selectedTonality;
+const levenshteinDistance = (str1, str2) => {
+  const m = str1.length;
+  const n = str2.length;
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
 
-            const matchesSearchQuery =
-            searchQuery === '' ||
-            sample.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            sample.musical_instrument.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            sample.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            sample.mood.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            sample.tonality.toLowerCase().includes(searchQuery.toLowerCase());
+  for (let i = 0; i <= m; i++) {
+    dp[i][0] = i;
+  }
 
-            return matchesInstrument && matchesGenre && matchesMood && matchesTonality && matchesSearchQuery;
-        });
-    };
+  for (let j = 0; j <= n; j++) {
+    dp[0][j] = j;
+  }
 
-    const filteredSamples = filterSamples(samples);
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+      }
+    }
+  }
+
+  return dp[m][n];
+};
+
+
+const filterSamples = (samples) => {
+  const maxDistance = 2;
+  const searchTerms = searchQuery.toLowerCase().split(' ');
+
+  return samples.filter((sample) => {
+    const matchesInstrument = selectedInstrument === '' || sample.musical_instrument === selectedInstrument;
+    const matchesGenre = selectedGenre === '' || sample.genre === selectedGenre;
+    const matchesMood = selectedMood === '' || sample.mood === selectedMood;
+    const matchesTonality = selectedTonality === '' || sample.tonality === selectedTonality;
+
+    const matchesSearchQuery = searchQuery === '' || searchTerms.every((term) => {
+      const lowercaseTerm = term.toLowerCase();
+      return (
+        levenshteinDistance(sample.title.toLowerCase(), lowercaseTerm) <= maxDistance ||
+        sample.title.toLowerCase().includes(lowercaseTerm) ||
+        levenshteinDistance(sample.musical_instrument.toLowerCase(), lowercaseTerm) <= maxDistance ||
+        sample.musical_instrument.toLowerCase().includes(lowercaseTerm) ||
+        levenshteinDistance(sample.genre.toLowerCase(), lowercaseTerm) <= maxDistance ||
+        sample.genre.toLowerCase().includes(lowercaseTerm) ||
+        levenshteinDistance(sample.mood.toLowerCase(), lowercaseTerm) <= maxDistance ||
+        sample.mood.toLowerCase().includes(lowercaseTerm) ||
+        levenshteinDistance(sample.tonality.toLowerCase(), lowercaseTerm) <= maxDistance ||
+        sample.tonality.toLowerCase().includes(lowercaseTerm) ||
+        levenshteinDistance(sample.tempo.toLowerCase(), lowercaseTerm) <= 0 ||
+        sample.tempo.toLowerCase().includes(lowercaseTerm)
+      );
+    });
+
+    return matchesInstrument && matchesGenre && matchesMood && matchesTonality && matchesSearchQuery;
+  });
+};
+
+const filteredSamples = filterSamples(samples);
     console.log(filteredSamples)
 
     return (
-    <div>
+    <div className='collection-container'>
         <div className='searchrow'>
             <div className='searchbar'>
-                <img src={'icons/search.svg'} className='song--control-img'></img>
+             
+                    <img src={'icons/search.svg'}></img>
+           
                 <input className="searchinput" 
                 placeholder='Поиск'   
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}></input>
             </div>
 
-            <select className="filter-box" value={selectedInstrument} onChange={(e) => setSelectedInstrument(e.target.value)}>
-                <option value="">Все инструменты</option>
-                {instruments.map(instrument => (
-                    <option key={instrument} value={instrument}>{instrument}</option>
-                ))}
-            </select>
+            <div className='filter-box-container'>
+                <select className="filter-box" value={selectedInstrument} onChange={(e) => setSelectedInstrument(e.target.value)}>
+                    <option className='option' value="" selected>Инструмент</option>
+                    {instruments.map(instrument => (
+                        <option className='option' key={instrument} value={instrument}>{instrument}</option>
+                    ))}
+                </select>
 
-            <select className="filter-box" value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)}>
-                <option value="">Все жанры</option>
-                {genres.map(genre => (
-                    <option key={genre} value={genre}>{genre}</option>
-                ))}
-            </select>
+                <select className="filter-box" value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)}>
+                    <option className='option' value="">Жанр</option>
+                    {genres.map(genre => (
+                        <option className='option' key={genre} value={genre}>{genre}</option>
+                    ))}
+                </select>
 
-            <select className="filter-box" value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
-                <option value="">Все настроения</option>
-                {moods.map(mood => (
-                    <option key={mood} value={mood}>{mood}</option>
-                ))}
-            </select>
+                <select className="filter-box" value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
+                    <option className='option' value="">Настроение</option>
+                    {moods.map(mood => (
+                        <option className='option' key={mood} value={mood}>{mood}</option>
+                    ))}
+                </select>
 
-
-           <select className="filter-box" value={selectedTonality} onChange={(e) => setSelectedTonality(e.target.value)}>
-                <option value="">Все тональности</option>
-                {tons.map(tons => (
-                    <option key={tons} value={tons}>{tons}</option>
-                ))}
-            </select>
-
+            <select className="filter-box" value={selectedTonality} onChange={(e) => setSelectedTonality(e.target.value)}>
+                    <option className='option' value="">Тональность</option>
+                    {tons.map(tons => (
+                        <option className='option' key={tons} value={tons}>{tons}</option>
+                    ))}
+                </select>
+            </div>
         </div>
 
         <div className="containercol">
@@ -220,6 +260,7 @@ const SoundCollection = () =>  {
 
         {filteredSamples.map((sample, index) => (
             <div className="containersample" onClick={() => handleSongClick(filteredSamples, index)}>
+                
                 <div className="numbercol">{index+1}</div>
                 <img src={sample.icon_url} alt={sample.icon_url} className="imgcol" />
                 <div className="elementcol">{sample.title}</div>
@@ -228,9 +269,14 @@ const SoundCollection = () =>  {
                 <div className="elementcol">{sample.mood}</div>
                 <div className="elementcol">{sample.tonality}</div>
                 <div className="elementcol">{sample.tempo}</div>
+                
                 <img src={'icons/star.svg'} alt="star01I114" className="song--control-img" />
                 <img src={'icons/download.svg'} alt="download01I114" className="song--control-img"
-                onClick={() => handleDownload(sample.audioSrc, sample.title)}/>
+                onClick={(e) => {
+                        e.stopPropagation(); // Остановить распространение события
+                        handleDownload(sample.audioSrc, sample.title);
+                        }}/>
+
             </div>
             ))}
     </div>

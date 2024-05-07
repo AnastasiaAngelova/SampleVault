@@ -1,10 +1,14 @@
-
-
 @media screen and (max-width: 480px) {
-    .left-selection {
-        order: -1;
-        width: 100%;
-    }
+  .left-selection {
+      order: -1;
+      width: 100%;
+  }
+}
+
+.collection-container {
+    flex: auto;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .column-container {
@@ -36,12 +40,19 @@
     right: 0;
     height: 1px; /* Высота линии */
     background-color: rgb(175, 175, 175); /* Цвет линии */
+    bottom: 0; 
 }
 
+.containercol::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px; /* Высота линии */
+  background-color: rgb(175, 175, 175); /* Цвет линии */
+  top: 0; /* Линия снизу */
+}
 
-    .containercol::after {
-    bottom: 0; /* Линия снизу */
-    }
 
   .containersample{
     padding-left: 10px;
@@ -62,7 +73,7 @@
   .elementcol {
     flex: 1;
     width: 150px;
-    padding-left: 20px;
+    padding-left: 8px;
     white-space: normal;
     font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
     font-style: normal;
@@ -104,130 +115,104 @@
     border-radius: 10px;
   }
   
-  header .elementcol {
-    white-space: nowrap;
+header .elementcol {
+  white-space: nowrap;
   }
 
-  .searchrow{
-    /* Frame 168 */
+.searchrow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0px;
+  gap: 20px;
+}
 
-    box-sizing: border-box;
+  .searchbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  gap: 10px;
+  padding-left: 1%;
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 20px 0px;
-    gap: 20px;
+  width: 407px;
+  height: 44px;
 
-    width: 1112px;
-    height: 84px;
-    left: 464px;
-    top: 179px;
+  background: #FFFFFF;
+  background: color(display-p3 1.000 1.000 1.000);
 
-    /* Color/Accent/Black/100 */
-    border-bottom: 1px solid #D9D9D9;
-    border-bottom: 1px solid color(display-p3 0.851 0.851 0.851);
-
-  }
-
-  .searchbar{
-        /* Searchbar sample */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-
-    width: 407px;
-    height: 44px;
-
-    /* Color/Base/White */
-    background: #FFFFFF;
-    background: color(display-p3 1.000 1.000 1.000);
-    border-radius: 20px;
-    resize: none; /* Отключаем возможность изменения размера */
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-  }
+  border-radius: 20px;
+  
+  font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
 
 .searchinput {
-    display: flex;
-    outline: none; 
-    font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 500;
+  display: flex;
+  font-family: 'Montserrat', Roboto, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 
-    background: #FFFFFF;
-    background: color(display-p3 1.000 1.000 1.000);
-    border: 0;
+  border: 0;
+  border-radius: 20px;
 
-    width: 407px;
-    height: 44px;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
 } 
 
 .searchinput:focus {
-    outline: none; /* Убираем обводку при фокусировке */
+  outline: none; 
+}
+
+.searchbar:focus-within {
+  outline: 1.5px solid #5A5A5A; /* Измените цвет и стиль обводки по вашему усмотрению */
+}
+
+.filter-box-container {
+  flex: auto;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .filter-box{
-        /* Frame 68 */
-
-    /* Auto layout */
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
     border-radius: 10px;
-
     background: #f8f8f8;
-
-    width: 151px;
-    height: 44px;
-
-
     font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-
-    /* Color/Base/Black */
-    color: #1A1A1A;
-    color: color(display-p3 0.102 0.102 0.102);
-
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-
     border: 0;
+    padding: 10px;
+    margin-left: 2%;
+}
 
+.filter-box:hover {
+    background: #D9D9D9;
+}
+
+.filter-box:active {
+    background: #f8f8f8;
 }
 
 .filter-box:focus{
     outline: 0;
-}
-
-.filter-box:hover{
     background: #D9D9D9;
-}
-
-.song--control-img:hover {
-    background-color:
-    #838383; /* Слегка затемняем при наведении */
 }
 
 .song--control-img:active {
     background-color:
     #5A5A5A; /* Сильно затемняем при нажатии */
 }
+
+.option {
+  background: #f8f8f8;
+}
+
+.song--control-img {
+  width: 24px;
+  height: 24px;
+}
+

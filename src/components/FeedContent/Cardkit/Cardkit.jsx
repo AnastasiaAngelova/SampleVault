@@ -5,7 +5,7 @@ import './Cardkit.css'
 
 const Cardkit = (props) => {
 
-  console.log('logging '+process.env.PUBLIC_URL)
+//   console.log('logging '+process.env.PUBLIC_URL)
   return (
     <div className="cardkit-container">
         {console.log('tS ',props)}

@@ -32,7 +32,8 @@ const Drop = ({onMenuClick}) => {
                 <ul className="menu-list">
                    <div className="new-buttons">
                         <button className="btn-top" onClick={handleMenuSelect}>
-                            <span className='txt' style={{color:"black"}}>Новый звук с </span>
+                            <span className='txt' style={{color:"black"}}>Новый звук c </span>
+                            {/* <span className='txt' style={{color:"black"}}> </span> */}
                             <span className='txt' style={{color:"red"}}>AI</span>
                         </button>
                         <button className="btn-bottom">

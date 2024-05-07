@@ -17,7 +17,7 @@ function App() {
     <PlaylistProvider>
     <Router>
         <Navbar />
-          <div className={"main-page"}>
+          <div style={{paddingBottom: "114px"}} className={"main-page"}>
             <LeftMenu />
             <Routes>
               <Route exact path="/" element={<Navigate to="/feed" />} />

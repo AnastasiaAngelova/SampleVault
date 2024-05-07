@@ -83,3 +83,9 @@
     align-items: flex-start;
     flex-shrink: 0;
   }
+
+  .song-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+  }

@@ -22,7 +22,7 @@ const Feed = (props) => {
                 method: 'GET',
                 mode: 'cors'
             });
-            console.log(response)
+            // console.log(response)
             if (!response) {
                 throw new Error('Ошибка при получении списка сэмплов');
             }

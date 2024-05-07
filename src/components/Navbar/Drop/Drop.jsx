@@ -13,6 +13,11 @@ const Drop = ({onMenuClick}) => {
         navigate('/generate');;
     };
 
+    const handleMenuSelectUp = () => {
+        setOpen(false);
+        navigate('/upload');;
+    };
+
     return (
         <div className="dr">
             <button className="menu-button" onClick={() => setOpen(!isOpen)}>
@@ -40,7 +45,7 @@ const Drop = ({onMenuClick}) => {
                             <img className="chevron" src={"icons/add-circle.svg"} alt="My SVG" />
                         </div>
                         <div className="br">
-                        <span className='txt' style={{color:"black", textAlign:"center", alignItems:"center",justifyContent:"center"}}>Загрузить новый трек</span>
+                        <span className='txt' onClick={handleMenuSelectUp} style={{color:"black", textAlign:"center", alignItems:"center",justifyContent:"center"}}>Загрузить новый трек</span>
                         </div>
                      </button>
                    </div>

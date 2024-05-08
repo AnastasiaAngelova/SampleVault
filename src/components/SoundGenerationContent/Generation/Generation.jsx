@@ -3,8 +3,9 @@ import "./Generation.css"
 import Dropdown from './Dropdown/Dropdown';
 import DragDrop from '../../DragDrop/DragDrop';
 
-const Generation = ({onGenerate}) => {
+const Generation = ({ onGenerate }) => {
     const [generationMethod, setGenerationMethod] = useState("option1"); // Состояние для хранения выбранного метода генерации
+    const [inputText, setInputText] = useState('');
 
     // Обработчик изменения значения в выпадающем списке
     const handleDropdownChange = (selectedValue) => {
@@ -17,25 +18,27 @@ const Generation = ({onGenerate}) => {
             case "option1":
                 return (
                     <textarea
-                type="text"
-                className='generation-input'
-                placeholder="Напиши что бы ты хотел услышать..."
-                />  
+                        type="text"
+                        className='generation-input'
+                        value={inputText}
+                        placeholder="Напиши что бы ты хотел услышать..."
+                        onChange={(e) => setInputText(e.target.value)}
+                    />
                 );
             case "option2":
                 const img_types = ["JPG", "PNG", "GIF"];
                 return (
-                    <DragDrop 
+                    <DragDrop
                         fileTypes={img_types}
                         label="Выберите или перетащите сюда изображение"
                         pathtoicon={"icons/images-light.svg"}
                         alt={"images-light"}
                     />
-                    );
+                );
             default:
                 const audio_types = ["WAV", "MP3"];
                 return (
-                    <DragDrop 
+                    <DragDrop
                         fileTypes={audio_types}
                         label="Выберите или перетащите сюда аудиофайл"
                         pathtoicon={"icons/icon-park-outline.svg"}
@@ -59,7 +62,7 @@ const Generation = ({onGenerate}) => {
                             </strong>
                             Vault
                         </span>
-                    </div>  
+                    </div>
                 </div>
                 {getPlaceholderText()}
             </div>
@@ -71,27 +74,28 @@ const Generation = ({onGenerate}) => {
                         </div>
                         <div className='generation-right-top-text-right-wrapper'>
                             <span className='generation-right-top-text-right'>Длительность</span>
+
                         </div>
                     </div>
                     <div className='generation-right-top-pick-wrapper'>
                         <Dropdown onChange={handleDropdownChange} />
                         <div className='generation-duration'>
-                            <textarea 
-                            className='generation-duration-left-text'
-                            placeholder="00"
-                            maxlength="2"
+                            <textarea disabled
+                                className='generation-duration-left-text'
+                                placeholder="00"
+                                maxlength="2"
                             />
                             <div className='generation-duration-text'>:</div>
-                            <textarea 
-                            className='generation-duration-right-text'
-                            placeholder="00"
-                            maxlength="2"
+                            <textarea disabled
+                                className='generation-duration-right-text'
+                                placeholder="00"
+                                maxlength="2"
                             />
-                            
+
                         </div>
                     </div>
                 </div>
-                <button className='generation-button' onClick={onGenerate}>Сгенерировать звук</button>
+                <button className='generation-button' onClick={() => onGenerate(inputText, generationMethod)}>Сгенерировать звук</button>
             </div>
         </div>
 

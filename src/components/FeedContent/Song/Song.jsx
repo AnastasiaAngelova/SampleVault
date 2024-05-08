@@ -55,13 +55,20 @@ export function Song(props) {
         <img
           src={'icons/star.svg'}
           alt="star01I114"
-          className="song-control-img"
+          className="song--control-img"
+          onClick={(e) => {
+            e.stopPropagation(); 
+            /* TODO LOGIC */
+            }}
         />
         <img
           src={'icons/download.svg'}
           alt="download01I114"
-          className="song-control-img"
-          onClick={handleDownload}
+          className="song--control-img"
+          onClick={(e) => {
+            e.stopPropagation(); 
+            handleDownload();
+            }}
         />
       </div>
     </div>

@@ -63,9 +63,9 @@ const RightPart = () => {
     return (
         <div className="right-section">
             <Drop/>
-            <div className="imgd">
+            <div className="imgd" onClick={toggleDropdown}>
                 <img className='icon-right' src={user.id !== '' ? "icons/not-anonim.svg" : "icons/anonim.svg"} alt={user.id !== '' ? "Авторизован" : "Не авторизован"}/>
-                <img className='chevron' src={"icons/Chevron/chevron-down.svg"} onClick={toggleDropdown} alt="Иконка дропдавна"/>
+                <img className='chevron' src={"icons/Chevron/chevron-down.svg"}  alt="Иконка дропдавна"/>
                 {isDropdownOpen && <CabinetDropdown
                     user={user}
                 />}

@@ -180,7 +180,7 @@ const Upload = ({ onGenerate }) => {
 
 
             </div>
-            <div className="container">
+            <div className="container22">
             <div class="row">
                     <div class="text">Название</div>
                     <input type="text" value={str1} onChange={handleStr1} class="input" placeholder="Название"/>
@@ -208,7 +208,7 @@ const Upload = ({ onGenerate }) => {
             </div>
             
             <button className='generation-button' onClick={handleUpload}>Загрузить аудиофайл</button>
-            <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button>
+            {/* <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button> */}
             {/* <button onClick={handleutPack}></button> */}
         </div>
     )

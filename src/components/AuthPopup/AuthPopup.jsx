@@ -25,11 +25,11 @@ function AuthPopup() {
                     <h2>Авторизация</h2>
                 </div>
                 <div className="popup-body">
-                    <p>У вас есть аккаунт?</p>
+                    {/* <p>У вас есть аккаунт?</p> */}
                     <a className="btn btn-primary" onClick={redirectToLogin}>Войти</a>
                 </div>
                 <div className="popup-footer">
-                    <p>У вас нет аккаунта?</p>
+                    {/* <p>У вас нет аккаунта?</p> */}
                     <a className="btn btn-secondary" onClick={redirectToSignup}>Зарегистрироваться</a>
                 </div>
             </div>

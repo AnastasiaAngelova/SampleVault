@@ -12,11 +12,12 @@
 .dropdown-options {
     position: absolute;
     top: 0;
-    right: 100%; /* Изменено с left на right */
+    /* right: 100%; Изменено с left на right */
     min-width: 200px; /* Увеличиваем ширину списка */
     background-color: #fff;
     border: 1px solid #ccc;
-    margin-top: 20px;
+    margin-top: 42px;
+    margin-left: -160px;
 }
 
 .dropdown-option {

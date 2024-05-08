@@ -4,7 +4,7 @@ const PlaylistContext = createContext();
 
 export const PlaylistProvider = ({ children }) => {
   const [playlist, setPlaylist] = useState([]);
-  const [trackIndex, setTrackIndex] = useState(1);
+  const [trackIndex, setTrackIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   
   // Функция для сброса индекса текущего трека

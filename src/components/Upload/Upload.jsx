@@ -47,6 +47,19 @@ const Upload = ({ onGenerate }) => {
         console.log(file);
       };
 
+    const handleTryPref = async () => {
+        if (file) {
+                console.log('FI:E');
+                const fileNameParts = file.name.split("_");
+                console.log(fileNameParts)
+                setStr1(fileNameParts[0])
+                setStr2(fileNameParts[7])
+                setStr3("Funk")
+                setStr4("Bright")
+                setStr5(fileNameParts[3])
+                setStr6(fileNameParts[2])
+        }
+    }
     // Обработчик нажатия на кнопку "Загрузить аудиофайл"
     const handleUpload = async () => {
         console.log('is file?');
@@ -56,11 +69,29 @@ const Upload = ({ onGenerate }) => {
             return;
         }
         console.log('yes file');
-        if (!str1 || !str2 || !str3 || !str4 || !str5 || !str6){
-            console.log('no fields');
-            alert("Пожалуйста, заполните все поля.");
-            return;
+        if (!str1){
+            setStr1('Undefiend')
         }
+        if (!str2){
+            setStr2("Undefiend")
+        }
+        if (!str3){
+            setStr3("Undefiend")
+        }
+        if (!str4){
+            setStr4("Undefiend")
+        }
+        if (!str5){
+            setStr5("Undefiend")
+        }
+        if (!str6){
+            setStr6("Undefiend")
+        }
+        // if (!str1 || !str2 || !str3 || !str4 || !str5 || !str6){
+        //     console.log('no fields');
+        //     alert("Пожалуйста, заполните все поля.");
+        //     return;
+        // }
 
         // // Создаем объект FormData для отправки файла на сервер
         // const formData = new FormData();
@@ -79,28 +110,29 @@ const Upload = ({ onGenerate }) => {
             //     tonality: {str5},
             //     tempo: {str6},
             // }
-            formData.append('title', str1)
-            formData.append('musical_instrument', str2)
-            formData.append('genre', str3)
-            formData.append('mood', str4)
-            formData.append('tonality', str5)
-            formData.append('tempo', str6)
+            formData.append('title', str1 ? str1 : "Undefiend")
+            formData.append('musical_instrument', str2 ? str2 : "Undefiend")
+            formData.append('genre', str3 ? str3 : "Undefiend")
+            formData.append('mood', str4 ? str4 : "Undefiend")
+            formData.append('tonality', str5 ? str5 : "Undefiend")
+            formData.append('tempo', str6 ? str6 : "Undefiend")
 
+            // const response = await axios.post('https://samplevault.ru/api/v1/sounds/upload', formData, {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     }
+            // });
 
-            // formData.append('json_data', json.stringify({
-            //     title: str1,
-            //     musical_instrument: str2,
-            //     genre: str3,
-            //     mood: str4,
-            //     tonality: str5,
-            //     tempo: str6,
-            // }));
-            // Выполняем POST-запрос на сервер для загрузки файла
-            const response = await axios.post('https://samplevault.ru/api/v1/sounds/upload', formData, {
+            const response = await fetch('https://samplevault.ru/api/v1/sounds/upload', {
+                method: 'POST',
+                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'multipart'
+                },
+                body: formData
             });
+            
+
             console.log('File uploaded successfully:', response.data);
             setStr1('')
             setStr2('')
@@ -185,6 +217,8 @@ const Upload = ({ onGenerate }) => {
                 </div> */}
             </div>
             <button className='generation-button' onClick={handleUpload}>Загрузить аудиофайл</button>
+            {/* <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button> */}
+            {/* <button onClick={handleutPack}></button> */}
         </div>
     )
 };

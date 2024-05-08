@@ -1,8 +1,14 @@
 .song-container {
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px; */
+    padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px ;
     padding-bottom: 5px ;
     border-radius: 10px;
+    position: relative;
     gap: 10px;
     display: flex;
     align-items: center;
@@ -14,9 +20,10 @@
 
   .song-info {
     gap: 5px;
+    width: 30vw;
     display: flex;
     align-items: center;
-    width: -webkit-fill-available;
+    flex-shrink: 0;
   }
 
   .song-number {
@@ -75,10 +82,4 @@
     position: relative;
     align-items: flex-start;
     flex-shrink: 0;
-  }
-
-  .song-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
   }

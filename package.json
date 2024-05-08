@@ -6,15 +6,24 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "react": "^18.3.0",
+=======
+    "axios": "^1.6.8",
+    "react": "^18.2.0",
+>>>>>>> origin/frontend_base
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.3.0",
     "react-drag-drop-files": "^2.3.10",
     "react-h5-audio-player": "^3.9.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.22.3",
+<<<<<<< HEAD
     "react-scripts": "^3.0.1",
     "serve": "^14.2.3",
+=======
+    "react-scripts": "^5.0.1",
+>>>>>>> origin/frontend_base
     "web-vitals": "^2.1.4"
   },
   "scripts": {

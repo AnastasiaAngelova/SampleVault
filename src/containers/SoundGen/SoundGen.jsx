@@ -109,7 +109,7 @@ const SampleGen = () => {
     }, []);
 
     return (
-        <div className="right-selection">
+        <div className="right-selection-gen">
             <Generation onGenerate={handleGenerateSound}/>
 
             {loading && <div className={`loader ${loading ? 'show' : ''}`}></div>}
@@ -119,7 +119,7 @@ const SampleGen = () => {
                 <div className='sample-gen-text-recent-wrapper'>
                     <span className='sample-gen-text-recent'>Мои последние сгенерированные звуки: </span>
                 </div>
-                {/* <SongGen imageUrl={"SongImgs/song1.png"} number={"1"} title={"I'm a song"}/> */}
+                
                 <SongGenKit sounds={genSounds}/>
 
             </div>

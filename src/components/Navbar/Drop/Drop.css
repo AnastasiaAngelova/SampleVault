@@ -197,3 +197,7 @@
  .btn2:hover{
    background: #C3C3C3;
  }
+
+ .dr{
+   z-index:9999;
+ }

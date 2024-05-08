@@ -1,11 +1,7 @@
 .cardkit-container {
   margin-top: 15px;
   gap: 5px;
-  width: 30vw;
   display: flex;
-  /* overflow: auto; */
-  min-height: 50vh;
-  align-items: center;
   flex-direction: column;
 }
 

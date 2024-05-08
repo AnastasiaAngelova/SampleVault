@@ -5,7 +5,7 @@ import Upload from "../../components/Upload/Upload"
 
 const UploadPage = () => {
     return (
-        <div className="right-selection">
+        <div className="right-selection-gen">
             <Upload/>
         </div>
     );

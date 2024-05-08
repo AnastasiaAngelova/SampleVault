@@ -95,10 +95,10 @@ const Feed = (props) => {
                 ToDo: ReNew Feed */}
                 <div className='cards'>
                     <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
-                        Создание звуков вместе с AI
+                        <span className='text-class'>Создание звуков вместе с AI</span>
                     </div>
                     <div className='nekirkorov'>
-                        Редактор <br /> звуков
+                        <span className='text-class'>Редактор звуков</span>
                     </div>
                 </div>
 

@@ -1,12 +1,9 @@
 .left-selection {
     padding-top: 10px;
-    flex: 1;
     align-items: center;
     text-align: left;
     justify-content: center;
-    min-width: 150px;
-    width: 30vw;
-    max-width: 340px;
+    width: 15vw;
 }
 
 .left-selection_button{

@@ -16,6 +16,8 @@ const SoundCollection = () =>  {
     const [selectedMood, setSelectedMood] = useState('');
     const [selectedTonality, setSelectedTonality] = useState('');
 
+    const [loaded, setLoaded] = useState(false);
+
     const { setPlaylist, setTrackIndex, setIsPlaying, isPlaying, trackIndex } = usePlaylist();
 
     const handleSongClick = (playlist, number) => {
@@ -68,6 +70,7 @@ const SoundCollection = () =>  {
             }
 
             const data = JSON.parse(text);
+            setLoaded(true)
             console.log('Сэмплы получены: ', data);
 
             if (data.length === 0) {
@@ -199,7 +202,70 @@ const filterSamples = (samples) => {
 };
 
 const filteredSamples = filterSamples(samples);
-    console.log(filteredSamples)
+    // console.log(filteredSamples)
+    if (!loaded){
+        return(
+            <div className='collection-container'>
+        <div className='searchrow'>
+            <div className='searchbar'>
+             
+                    <img src={'icons/search.svg'}></img>
+           
+                <input className="searchinput" 
+                placeholder='Поиск'   
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}></input>
+            </div>
+
+            <div className='filter-box-container'>
+                <select className="filter-box" value={selectedInstrument} onChange={(e) => setSelectedInstrument(e.target.value)}>
+                    <option className='option' value="" selected>Инструмент</option>
+                    {instruments.map(instrument => (
+                        <option className='option' key={instrument} value={instrument}>{instrument}</option>
+                    ))}
+                </select>
+
+                <select className="filter-box" value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)}>
+                    <option className='option' value="">Жанр</option>
+                    {genres.map(genre => (
+                        <option className='option' key={genre} value={genre}>{genre}</option>
+                    ))}
+                </select>
+
+                <select className="filter-box" value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
+                    <option className='option' value="">Настроение</option>
+                    {moods.map(mood => (
+                        <option className='option' key={mood} value={mood}>{mood}</option>
+                    ))}
+                </select>
+
+            <select className="filter-box" value={selectedTonality} onChange={(e) => setSelectedTonality(e.target.value)}>
+                    <option className='option' value="">Тональность</option>
+                    {tons.map(tons => (
+                        <option className='option' key={tons} value={tons}>{tons}</option>
+                    ))}
+                </select>
+            </div>
+        </div>
+
+        <div className="containercol">
+            <div className="numbercol"></div>
+            <div className="imgtablecol"></div>
+            <div className="tablecol">Название</div>
+            <div className="tablecol">Инструменты</div>
+            <div className="tablecol">Жанр</div>
+            <div className="tablecol">Настроение</div>
+            <div className="tablecol">Тональность</div>
+            <div className="tablecol">Темп</div>
+            <div className="song--control-img"></div>
+            <div className="song--control-img"></div>
+        </div>
+        <div className="loader-container">
+            <div className="loader22"></div>
+        </div>
+        </div>
+        );
+    }
 
     return (
     <div className='collection-container'>
@@ -257,8 +323,15 @@ const filteredSamples = filterSamples(samples);
             <div className="song--control-img"></div>
             <div className="song--control-img"></div>
         </div>
+    
+{/*         
+        <div className='loader-container'>
+            <div className="loader22"></div>
+        </div> */}
+        
 
-        {filteredSamples.map((sample, index) => (
+
+        {filteredSamples.length ? filteredSamples.map((sample, index) => (
             <div className="containersample" onClick={() => handleSongClick(filteredSamples, index)}>
                 
                 <div className="numbercol">{index+1}</div>
@@ -273,11 +346,13 @@ const filteredSamples = filterSamples(samples);
                 <img src={'icons/star.svg'} alt="star01I114" className="song--control-img" />
                 <img src={'icons/download.svg'} alt="download01I114" className="song--control-img"
                 onClick={(e) => {
-                        e.stopPropagation(); // Остановить распространение события
+                        e.stopPropagation(); 
                         handleDownload(sample.audioSrc, sample.title);
                         }}/>
             </div>
-            ))}
+            ))
+            : <div className='loader-container'> Упс! Мы ничего не нашли :( </div>
+            }
     </div>
 
     );

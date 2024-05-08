@@ -71,3 +71,12 @@ top: 361px;
     transform: translateY(0); /* Поднимаем вверх */
 }
 
+.right-selection-gen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: -webkit-fill-available;
+
+    padding-right: 5%;
+}

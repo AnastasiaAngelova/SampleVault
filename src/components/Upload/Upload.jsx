@@ -150,17 +150,11 @@ const Upload = ({ onGenerate }) => {
 
     return (
         <div>
-            {console.log("asdas")}
-            <div>
+            <div className="file-uploader">
                 <FileUploader 
                     handleChange={handleChange} 
                     name="file" 
                     types={["WAV", "MP3"]}
-                    // {...file ? (
-                    //     {label: file.name}
-                    // ) : (
-                    //     {label: "Перетащите или вставьте сюда аудиофайл"}
-                    // )}
                     dropMessageStyle={"icons/images-light.svg"}
                     pathtoicon={"icons/images-light.svg"}
                     alt={"icon-park-outline"}
@@ -200,8 +194,8 @@ const Upload = ({ onGenerate }) => {
                     <input type="text" value={str3} onChange={handleStr3} class="input" placeholder="Жанр"/>
                 </div>
                 <div class="row">
-                    <div class="text">Настроеник</div>
-                    <input type="text" value={str4} onChange={handleStr4} class="input" placeholder="Настроеник"/>
+                    <div class="text">Настроение</div>
+                    <input type="text" value={str4} onChange={handleStr4} class="input" placeholder="Настроение"/>
                 </div>
                 <div class="row">
                     <div class="text">Тональность</div>
@@ -211,11 +205,8 @@ const Upload = ({ onGenerate }) => {
                     <div class="text">Темп</div>
                     <input type="text" value={str6} onChange={handleStr6} class="input" placeholder="Темп"/>
                 </div>
-                {/* <div class="row">
-                    <div class="text">Тип</div>
-                    <input type="text" class="input" placeholder="Тип"/>
-                </div> */}
             </div>
+            
             <button className='generation-button' onClick={handleUpload}>Загрузить аудиофайл</button>
             <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button>
             {/* <button onClick={handleutPack}></button> */}

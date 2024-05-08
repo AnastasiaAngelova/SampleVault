@@ -1,14 +1,8 @@
 .song-container {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20px; */
-    padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px ;
     padding-bottom: 5px ;
     border-radius: 10px;
-    position: relative;
     gap: 10px;
     display: flex;
     align-items: center;
@@ -20,10 +14,9 @@
 
   .song-info {
     gap: 5px;
-    width: 30vw;
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    width: -webkit-fill-available;
   }
 
   .song-number {
@@ -71,7 +64,6 @@
     line-height: 18px;
     text-align: left;
     color:  #989898;
-    ;
 
   }
   
@@ -83,6 +75,7 @@
     align-items: flex-start;
     flex-shrink: 0;
   }
+
 
   .song-image {
     width: 60px;

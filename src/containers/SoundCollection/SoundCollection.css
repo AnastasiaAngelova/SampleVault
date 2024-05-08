@@ -7,8 +7,8 @@
 
 .collection-container {
     flex: auto;
-    padding-left: 5%;
     padding-right: 5%;
+    margin: 5px;
 }
 
 .column-container {
@@ -204,6 +204,11 @@ header .elementcol {
     background: #D9D9D9;
 }
 
+.song--control-img:hover {
+    background-color:
+    #747474; /* Сильно затемняем при нажатии */
+}
+
 .song--control-img:active {
     background-color:
     #5A5A5A; /* Сильно затемняем при нажатии */
@@ -214,7 +219,20 @@ header .elementcol {
 }
 
 .song--control-img {
+  border-radius: 5px;
   width: 24px;
   height: 24px;
 }
 
+.loader22 {
+  display: flex;
+  
+
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+
+  border: 4px dashed #333;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}

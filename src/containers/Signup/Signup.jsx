@@ -82,7 +82,7 @@ const Signup = () =>  {
                     <input type="button" onClick={handleSignup} className="button" value="Зарегистрироваться"/>
                 </form>
                 <div className="signup">
-               <span className="signup">Уже имеете аккаунт?
+               <span className="signup">Уже имеете аккаунт?  
                    <label onClick={redirectToLogin}>Войти</label>
                 </span>
                 </div>

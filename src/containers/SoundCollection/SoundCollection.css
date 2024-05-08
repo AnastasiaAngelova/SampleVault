@@ -7,8 +7,8 @@
 
 .collection-container {
     flex: auto;
-    padding-left: 5%;
     padding-right: 5%;
+    margin: 5px;
 }
 
 .column-container {
@@ -214,5 +214,18 @@ header .elementcol {
 .song--control-img {
   width: 24px;
   height: 24px;
+}
+
+.loader22 {
+  display: flex;
+  
+
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+
+  border: 4px dashed #333;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
 }
 

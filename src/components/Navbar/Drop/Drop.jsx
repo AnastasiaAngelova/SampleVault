@@ -10,7 +10,7 @@ const Drop = ({onMenuClick}) => {
 
     const handleMenuSelect = () => {
         setOpen(false);
-        navigate('/generate');
+        navigate('/generate');;
     };
 
     const handleMenuSelectUp = () => {

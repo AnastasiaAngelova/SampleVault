@@ -1,67 +1,45 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes, Navigate, BrowserRouter} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import LeftMenu from './components/LeftMenu/LeftMenu';
+// import MainContent from './components/MainContent/MainContent';
+// import Player from './components/Player/Player';
 import { PlaylistProvider } from "./components/Player/PlaylistContext";
 import AudioControler from "./components/Player/Player";
 import Feed from './containers/Feed/Feed'
 import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
-import Login from './containers/Login/Login'
-import Signup from './containers/Signup/Signup'
-import AuthPopup from "./components/AuthPopup/AuthPopup";
+import UploadPage from './containers/UploadPage/UploadPage';
+
 
 function App() {
-    // Проверяем текущий путь
-    const currentPath = window.location.pathname;
+  return (
+    <PlaylistProvider>
+    <Router>
+        <Navbar />
+          <div style={{paddingBottom: "114px"}} className={"main-page"}>
+            <LeftMenu />
+            <Routes>
+              <Route exact path="/" element={<Navigate to="/feed" />} />
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/generate" element={<SoundGen />} />
+              <Route path="/sound_collection" element={<SoundCollection />} /> 
+              <Route path="/upload" element={<UploadPage />} /> 
 
-    if (currentPath === "/auth_popup") {
-        return (
-            <PlaylistProvider>
-                <BrowserRouter>
-                    <AuthPopup />
-                </BrowserRouter>
-            </PlaylistProvider>
-        );
-    }
+              {/*    <Route path="/tracks" element={TO BE} />
+                  <Route path="/upload" element={TO BE} />
+                  <Route path="/daw" element={TO BE} />
+                  <Route path="/profile" element={TO BE} />
+              */}
+            </Routes> 
+          </div>
 
-    if (currentPath === "/signup") {
-        return (
-            <PlaylistProvider>
-                <BrowserRouter>
-                    <Signup />
-                </BrowserRouter>
-            </PlaylistProvider>
-        );
-    }
+        {/* <Player /> */}
+        <AudioControler />
 
-    if (currentPath === "/login") {
-        return (
-            <PlaylistProvider>
-                <BrowserRouter>
-                    <Login />
-                </BrowserRouter>
-            </PlaylistProvider>
-        );
-    }
-
-    return (
-        <PlaylistProvider>
-            <Router>
-                <Navbar />
-                <div className={"main-page"}>
-                    <LeftMenu />
-                    <Routes>
-                        <Route exact path="/" element={<Navigate to="/feed" />} />
-                        <Route path="/feed" element={<Feed />} />
-                        <Route path="/generate" element={<SoundGen />} />
-                        <Route path="/sound_collection" element={<SoundCollection />} />
-                    </Routes>
-                </div>
-                <AudioControler />
-            </Router>
-        </PlaylistProvider>
-    );
+    </Router>
+    </PlaylistProvider>
+  );
 }
 
 export default App;

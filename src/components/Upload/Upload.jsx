@@ -52,12 +52,12 @@ const Upload = ({ onGenerate }) => {
                 console.log('FI:E');
                 const fileNameParts = file.name.split("_");
                 console.log(fileNameParts)
-                setStr1(fileNameParts[0] + "_" + fileNameParts[3])
-                setStr2(fileNameParts[3])
-                setStr3("Ambient")
-                setStr4("Dark")
+                setStr1(fileNameParts[0] + "_" + fileNameParts[1])
+                setStr2(fileNameParts[1])
+                setStr3("House")
+                setStr4("Upbeat")
                 setStr5(fileNameParts[2])
-                setStr6(fileNameParts[1])
+                setStr6(fileNameParts[3])
         }
     }
     // Обработчик нажатия на кнопку "Загрузить аудиофайл"

@@ -4,15 +4,50 @@ import Navbar from './components/Navbar/Navbar';
 import LeftMenu from './components/LeftMenu/LeftMenu';
 // import MainContent from './components/MainContent/MainContent';
 // import Player from './components/Player/Player';
+import {BrowserRouter} from "react-router-dom";
 import { PlaylistProvider } from "./components/Player/PlaylistContext";
 import AudioControler from "./components/Player/Player";
 import Feed from './containers/Feed/Feed'
 import SoundGen from './containers/SoundGen/SoundGen'
 import SoundCollection from './containers/SoundCollection/SoundCollection';
 import UploadPage from './containers/UploadPage/UploadPage';
-
+import Login from './containers/Login/Login'
+import Signup from './containers/Signup/Signup'
+import AuthPopup from './components/AuthPopup/AuthPopup'
 
 function App() {
+  const currentPath = window.location.pathname;
+
+  if (currentPath === "/auth_popup") {
+    return (
+        <PlaylistProvider>
+          <BrowserRouter>
+            <AuthPopup />
+          </BrowserRouter>
+        </PlaylistProvider>
+    );
+  }
+
+  if (currentPath === "/signup") {
+    return (
+        <PlaylistProvider>
+          <BrowserRouter>
+            <Signup />
+          </BrowserRouter>
+        </PlaylistProvider>
+    );
+  }
+
+  if (currentPath === "/login") {
+    return (
+        <PlaylistProvider>
+          <BrowserRouter>
+            <Login />
+          </BrowserRouter>
+        </PlaylistProvider>
+    );
+  }
+
   return (
     <PlaylistProvider>
     <Router>

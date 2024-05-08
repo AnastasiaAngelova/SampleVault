@@ -15,7 +15,11 @@ const SampleGen = () => {
         try {
             const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
                 method: 'GET',
-                mode: 'cors'
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             });
 
             console.log(response)
@@ -88,13 +92,59 @@ const SampleGen = () => {
             setTimeout(async () => {
                 const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
                     method: 'GET',
-                    mode: 'cors'
+                    credentials: 'include',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                 });
                 setLoading(false);
                 setShowLoader(false);
                 if (!response.ok) {
                     throw new Error('Ошибка при запросе на сервер');
                 }
+
+                // const response2 = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
+                //     method: 'GET',
+                //     credentials: 'include',
+                //     mode: 'cors',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                // });
+                // setLoading(false);
+                // setShowLoader(false);
+                //
+                // console.log(response2)
+                // if (!response2) {
+                //     throw new Error('Ошибка при получении списка сэмплов');
+                // }
+
+                const text = await response.text();
+                if (text.trim() === '') {
+                    console.log('Ответ пустой');
+                    return;
+                }
+
+                const data = JSON.parse(text);
+                console.log('Сэмплы получены: ', data);
+
+                if (data.length === 0) {
+                    console.log('Список сэмплов пуст');
+                }
+
+                const Sounds = data.map(item => {
+                    return {
+                        imageUrl: item.icon_url,
+                        author: 'autor',
+                        duration: item.duration,
+                        title: item.title,
+                        audioUrl: item.audio_url
+                    };
+                });
+                console.log(typeof (Sounds))
+
+                // setGenSounds(Sounds); // Обновляем состояние samples
 
                 // Получение данных из ответа
                 //const data = await response.json();
@@ -103,7 +153,7 @@ const SampleGen = () => {
                 setGenSounds(prevSounds => [{
                     imageUrl: "SongImgs/song1.png",
                     title: "GeneratedSound",
-                    audioSrc: 'https://samplevault.ru/api/v1/sounds/generate'
+                    audioSrc: Sounds[0].audioUrl,
                 }, ...prevSounds]);
             }, 5000);
         } catch (error) {

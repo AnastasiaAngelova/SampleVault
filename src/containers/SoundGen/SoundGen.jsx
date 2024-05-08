@@ -11,12 +11,13 @@ const SampleGen = () => {
     const [showLoader, setShowLoader] = useState(false);
 
 
-    const handleGetGenSounds = async () => {try {
-        const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
-            method: 'GET',
-            mode: 'cors'
-        });
-        
+    const handleGetGenSounds = async () => {
+        try {
+            const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
+                method: 'GET',
+                mode: 'cors'
+            });
+
             console.log(response)
             if (!response) {
                 throw new Error('Ошибка при получении списка сэмплов');
@@ -44,7 +45,7 @@ const SampleGen = () => {
                     audioUrl: item.audio_url
                 };
             });
-            console.log(typeof(Sounds))
+            console.log(typeof (Sounds))
 
             setGenSounds(Sounds); // Обновляем состояние samples
 
@@ -54,50 +55,58 @@ const SampleGen = () => {
 
     };
 
-    const handleGenerateSound = async () => {
-    setShowLoader(true);
-    setLoading(true); // Устанавливаем состояние загрузки в true при начале запроса
-    try {
+    const handleGenerateSound = async (inputText, generationMethod) => {
+        setShowLoader(true);
+        setLoading(true); // Устанавливаем состояние загрузки в true при начале запроса
+        const requestBody = {
+            text: inputText
+        };
         try {
-            const response = await fetch('https://samplevault.ru/api/v1/auth', {
-                method: 'GET',
-                credentials: 'include',
-                mode: 'cors'
-            });
+            try {
+                const response = await fetch(`https://samplevault.ru/api/v1/sounds/generate_by_text`, {
+                    body: JSON.stringify(requestBody),
+                    method: 'POST',
+                    credentials: 'include',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-            if (!response) {
-                throw new Error('Ошибка при получении списка сэмплов');
+                if (!response) {
+                    throw new Error('Ошибка при получении списка сэмплов');
+                }
+
+                if (response.status === 401) {
+                    window.location.href = '/auth_popup';
+                }
+            } catch (error) {
+                console.error('Ошибка при получении списка сэмплов:', error);
             }
 
-            if (response.status === 401) {
-                window.location.href = '/auth_popup';
-            }
+            // Задержка выполнения кода на 5 секунд
+            setTimeout(async () => {
+                const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                setLoading(false);
+                setShowLoader(false);
+                if (!response.ok) {
+                    throw new Error('Ошибка при запросе на сервер');
+                }
+
+                // Получение данных из ответа
+                //const data = await response.json();
+
+                // Обновление списка genSounds с новым сгенерированным треком
+                setGenSounds(prevSounds => [{
+                    imageUrl: "SongImgs/song1.png",
+                    title: "GeneratedSound",
+                    audioSrc: 'https://samplevault.ru/api/v1/sounds/generate'
+                }, ...prevSounds]);
+            }, 5000);
         } catch (error) {
-            console.error('Ошибка при получении списка сэмплов:', error);
-        }
-
-        // Задержка выполнения кода на 5 секунд
-        setTimeout(async () => {
-            const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
-                method: 'GET',
-                mode: 'cors'
-            });
-            setLoading(false);
-            setShowLoader(false);
-            if (!response.ok) {
-                throw new Error('Ошибка при запросе на сервер');
-            }
-
-            // Получение данных из ответа
-            //const data = await response.json();
-
-            // Обновление списка genSounds с новым сгенерированным треком
-            setGenSounds(prevSounds => [{
-                imageUrl: "SongImgs/song1.png",
-                title: "GeneratedSound",
-                audioSrc: 'https://samplevault.ru/api/v1/sounds/generate'
-            }, ...prevSounds]);
-        }, 5000); } catch (error) {
             setLoading(false);
             setShowLoader(false);
             console.error('Ошибка:', error);
@@ -110,7 +119,7 @@ const SampleGen = () => {
 
     return (
         <div className="right-selection-gen">
-            <Generation onGenerate={handleGenerateSound}/>
+            <Generation onGenerate={handleGenerateSound} />
 
             {loading && <div className={`loader ${loading ? 'show' : ''}`}></div>}
 
@@ -119,8 +128,8 @@ const SampleGen = () => {
                 <div className='sample-gen-text-recent-wrapper'>
                     <span className='sample-gen-text-recent'>Мои последние сгенерированные звуки: </span>
                 </div>
-                
-                <SongGenKit sounds={genSounds}/>
+
+                <SongGenKit sounds={genSounds} />
 
             </div>
         </div>

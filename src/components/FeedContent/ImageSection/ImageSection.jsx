@@ -1,3 +1,4 @@
+import React  from 'react';
 import "./ImageSection.css"
 
 export function ImageSection() {

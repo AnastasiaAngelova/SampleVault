@@ -1,0 +1,60 @@
+#name: build-n-deploy
+#
+#on:
+#  push:
+#    branches:
+#      - "*"
+#
+#jobs:
+#  build-n-deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Build
+#        run: |
+#          export NODE_OPTIONS=--openssl-legacy-provider
+#          docker build -t my-react-app .
+#          docker run -d -p 3000:3000 my-react-app
+
+name: CD
+
+on:
+  push:
+
+jobs:
+  copy-repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy repository
+        uses: easingthemes/ssh-deploy@v4.1.8
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          SOURCE: .
+          TARGET: /home/ubuntu/samplevault-front
+
+  update-app-version:
+    needs: copy-repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect to server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd samplevault-front
+            git checkout frontend_base_litvak
+            export NODE_OPTIONS=--openssl-legacy-provider
+            docker stop my-react-app
+            docker rm my-react-app
+            docker rmi my-react-app
+            docker build -t my-react-app .
+            docker run --name my-react-app -d -p 3000:3000 my-react-app

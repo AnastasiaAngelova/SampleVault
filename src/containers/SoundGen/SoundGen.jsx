@@ -12,10 +12,10 @@ const SampleGen = () => {
 
 
     const handleGetGenSounds = async () => {try {
-        const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
-            method: 'GET',
-            mode: 'cors'
-        });
+            const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
+                method: 'GET',
+                mode: 'cors'
+            });
         
             console.log(response)
             if (!response) {
@@ -55,9 +55,27 @@ const SampleGen = () => {
     };
 
     const handleGenerateSound = async () => {
-    setShowLoader(true);
-    setLoading(true); // Устанавливаем состояние загрузки в true при начале запроса
+        setShowLoader(true);
+        setLoading(true); // Устанавливаем состояние загрузки в true при начале запроса
     try {
+        try {
+            const response = await fetch('https://samplevault.ru/api/v1/auth', {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors'
+            });
+
+            if (!response) {
+                throw new Error('Ошибка при получении списка сэмплов');
+            }
+
+            if (response.status === 401) {
+                window.location.href = '/auth_popup';
+            }
+        } catch (error) {
+            console.error('Ошибка при получении списка сэмплов:', error);
+        }
+
         // Задержка выполнения кода на 5 секунд
         setTimeout(async () => {
             const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {

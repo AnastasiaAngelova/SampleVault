@@ -1,5 +1,9 @@
 import "./Player.css";
+<<<<<<< HEAD
+import React, { useState } from "react";
+=======
 import React,{useRef, useEffect} from 'react';
+>>>>>>> origin/frontend_base
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { usePlaylist } from "./PlaylistContext";

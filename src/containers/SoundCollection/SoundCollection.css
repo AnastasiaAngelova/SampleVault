@@ -202,6 +202,11 @@ header .elementcol {
     background: #D9D9D9;
 }
 
+.song--control-img:hover {
+    background-color:
+    #747474; /* Сильно затемняем при нажатии */
+}
+
 .song--control-img:active {
     background-color:
     #5A5A5A; /* Сильно затемняем при нажатии */
@@ -212,6 +217,7 @@ header .elementcol {
 }
 
 .song--control-img {
+  border-radius: 5px;
   width: 24px;
   height: 24px;
 }
@@ -228,4 +234,3 @@ header .elementcol {
   border-radius: 50%;
   animation: spin 1.5s linear infinite;
 }
-

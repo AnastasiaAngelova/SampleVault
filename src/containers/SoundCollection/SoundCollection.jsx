@@ -346,7 +346,7 @@ const filteredSamples = filterSamples(samples);
                 <img src={'icons/star.svg'} alt="star01I114" className="song--control-img" />
                 <img src={'icons/download.svg'} alt="download01I114" className="song--control-img"
                 onClick={(e) => {
-                        e.stopPropagation(); // Остановить распространение события
+                        e.stopPropagation(); 
                         handleDownload(sample.audioSrc, sample.title);
                         }}/>
             </div>

@@ -64,7 +64,6 @@
     line-height: 18px;
     text-align: left;
     color:  #989898;
-    ;
 
   }
   
@@ -76,6 +75,7 @@
     align-items: flex-start;
     flex-shrink: 0;
   }
+
 
   .song-image {
     width: 60px;

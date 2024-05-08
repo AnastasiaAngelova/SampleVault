@@ -15,9 +15,11 @@
 
 .text {
     padding: 10px;
-    /* border: 1px solid #ccc; */
     border-radius: 5px;
-    /* margin-bottom: 5px; */
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
 }
 
 .input {
@@ -25,8 +27,19 @@
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .generation-button{
     margin-top: 15px
+}
+
+.file-uploader{
+
+    display: flex;
+    justify-content: center;
+    padding: 2%;
 }

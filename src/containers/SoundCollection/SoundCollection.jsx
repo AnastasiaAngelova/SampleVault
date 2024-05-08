@@ -199,7 +199,7 @@ const filterSamples = (samples) => {
 };
 
 const filteredSamples = filterSamples(samples);
-    console.log(filteredSamples)
+    // console.log(filteredSamples)
 
     return (
     <div className='collection-container'>
@@ -257,6 +257,13 @@ const filteredSamples = filterSamples(samples);
             <div className="song--control-img"></div>
             <div className="song--control-img"></div>
         </div>
+    
+{/*         
+        <div className='loader-container'>
+            <div className="loader22"></div>
+        </div> */}
+        
+    
 
         {filteredSamples.map((sample, index) => (
             <div className="containersample" onClick={() => handleSongClick(filteredSamples, index)}>

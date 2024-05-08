@@ -56,6 +56,11 @@ const Upload = ({ onGenerate }) => {
             return;
         }
         console.log('yes file');
+        if (!str1 || !str2 || !str3 || !str4 || !str5 || !str6){
+            console.log('no fields');
+            alert("Пожалуйста, заполните все поля.");
+            return;
+        }
 
         // // Создаем объект FormData для отправки файла на сервер
         // const formData = new FormData();

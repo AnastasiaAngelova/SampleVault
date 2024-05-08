@@ -276,7 +276,6 @@ const filteredSamples = filterSamples(samples);
                         e.stopPropagation(); // Остановить распространение события
                         handleDownload(sample.audioSrc, sample.title);
                         }}/>
-
             </div>
             ))}
     </div>

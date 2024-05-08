@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import "./Song.css"
 import { usePlaylist } from "../../Player/PlaylistContext"
-import { SampleButton } from '../SampleInfo/SampleButton'
+// import { SampleButton } from '../SampleInfo/SampleButton'
 
 
 export function Song(props) {
@@ -21,7 +21,7 @@ export function Song(props) {
   };
 
 
-  console.log(props)
+  // console.log(props)
 
   const { setPlaylist, setTrackIndex, setIsPlaying, isPlaying, trackIndex } = usePlaylist();
 
@@ -32,7 +32,7 @@ export function Song(props) {
   };
 
   const handleClick = (playlist, number) => {
-    if (trackIndex === number - 1 && playlist.trendSounds === playlist.trendSounds) {
+    if (trackIndex === number - 1) {
       setIsPlaying(!isPlaying);
     } else {
       setIsPlaying(true);
@@ -46,7 +46,8 @@ export function Song(props) {
         <span className="song-number-text">{props.number}</span>
       </div>
       <div className="song-info" >
-        <SampleButton imageUrl={props.imageUrl}  />
+      <img src={props.imageUrl} className='song-image'/>
+        {/* <SampleButton imageUrl={props.imageUrl}  /> */}
         <div className="song-details">
           <h2 className="song-title">{props.title}</h2>
           <p className="song-description">{props.author}</p>

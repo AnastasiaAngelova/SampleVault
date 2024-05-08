@@ -30,18 +30,20 @@ export default function AudioControler() {
     }
 
   }, [isPlaying]);
-
-  if (!playlist || playlist.length === 0) {
+  console.log(playlist.length)
+  if (playlist.length === 0) {
     return <div className="controler">
             <AudioPlayer
             style={{color: "white", background: "#FFFFFF" }}
             autoPlay
             onPlay={(e) => console.log("onPlay")}
+            header={" "}
             showSkipControls={true}
             showJumpControls={false}
             onClickPrevious={handleClickPrevious}
             onClickNext={handleClickNext}
             onEnded={handleClickNext}
+            loop={true}
             ref={player}
             />
             </div>;

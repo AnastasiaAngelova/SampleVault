@@ -52,12 +52,12 @@ const Upload = ({ onGenerate }) => {
                 console.log('FI:E');
                 const fileNameParts = file.name.split("_");
                 console.log(fileNameParts)
-                setStr1(fileNameParts[0])
-                setStr2(fileNameParts[7])
-                setStr3("Funk")
-                setStr4("Bright")
-                setStr5(fileNameParts[3])
-                setStr6(fileNameParts[2])
+                setStr1(fileNameParts[0] + "_" + fileNameParts[3])
+                setStr2(fileNameParts[3])
+                setStr3("Ambient")
+                setStr4("Dark")
+                setStr5(fileNameParts[2])
+                setStr6(fileNameParts[1])
         }
     }
     // Обработчик нажатия на кнопку "Загрузить аудиофайл"
@@ -217,7 +217,7 @@ const Upload = ({ onGenerate }) => {
                 </div> */}
             </div>
             <button className='generation-button' onClick={handleUpload}>Загрузить аудиофайл</button>
-            {/* <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button> */}
+            <button onClick={handleTryPref}>ПРЕФАЕР ФАЙЛА</button>
             {/* <button onClick={handleutPack}></button> */}
         </div>
     )

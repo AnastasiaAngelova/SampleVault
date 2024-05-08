@@ -80,6 +80,8 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .tablecol {

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import "./SoundGen.css"
 
 import Generation from "../../components/SoundGenerationContent/Generation/Generation"
-import SongGenKit from '../../components/SoundGenerationContent/SongKit/SongGenKit';
+import SongGenKit from '../../components/SoundGenerationContent/SongKit/SongGenKit'
+
+import Cardkit2 from '../../components/Cardkit2/Cardkit2';
+
 
 const SampleGen = () => {
 
@@ -49,7 +52,7 @@ const SampleGen = () => {
                     audioUrl: item.audio_url
                 };
             });
-            console.log(typeof (Sounds))
+            // console.log(typeof (Sounds))
 
             setGenSounds(Sounds); // Обновляем состояние samples
 
@@ -99,6 +102,7 @@ const SampleGen = () => {
                     },
                 });
                 setLoading(false);
+                // ТУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУУт
                 setShowLoader(false);
                 if (!response.ok) {
                     throw new Error('Ошибка при запросе на сервер');
@@ -179,7 +183,10 @@ const SampleGen = () => {
                     <span className='sample-gen-text-recent'>Мои последние сгенерированные звуки: </span>
                 </div>
 
-                <SongGenKit sounds={genSounds} />
+                {/* <SongGenKit sounds={genSounds} /> */}
+                <Cardkit2 className="ck" trendSounds={genSounds}></Cardkit2>
+                {/* <Cardkit2 className="ck" trendSounds={null}></Cardkit2> */}
+
 
             </div>
         </div>

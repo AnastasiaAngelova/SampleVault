@@ -1,5 +1,6 @@
 import React from 'react';
 import "./SongGen.css"
+// import {Cardkit2} from './Carkit2'
 
 import { SampleButton } from '../../FeedContent/SampleInfo/SampleButton';
 import { usePlaylist } from "../../Player/PlaylistContext"
@@ -22,18 +23,18 @@ export function SongGen(props) {
 
   const { setPlaylist } = usePlaylist();
 
-  const updatePlaylist = (playlist) => {
-    console.log("updating playlist", playlist);
-    const newPlaylist = playlist; // Новый плейлист, который нужно передать
-    setPlaylist(newPlaylist);
-  };
+  // const updatePlaylist = (playlist) => {
+  //   console.log("updating playlist", playlist);
+  //   const newPlaylist = playlist; // Новый плейлист, который нужно передать
+  //   setPlaylist(newPlaylist);
+  // };
 
   const handleClick = (playlist, number) => {
     // Вызовите функцию myFunction с параметрами
     console.log('song_click')
     console.log('playlist',playlist )
     // props.onStartMusic(playlist, number);
-    updatePlaylist(playlist.sounds);
+    // updatePlaylist(playlist.sounds);
   };
 
   return (
@@ -47,6 +48,9 @@ export function SongGen(props) {
           <h2 className="song-gen-title">{props.title}</h2>
         </div>
       </div>
+
+      {/* <Cardkit2 trendSounds={aiSounds}></Cardkit2>  */}
+{/* fsaasffsasfafsasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
         <img
           src={'icons/equalizer.svg'} 
           alt="equalizer"

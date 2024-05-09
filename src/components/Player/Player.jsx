@@ -19,7 +19,7 @@ export default function AudioControler() {
   const handleClickNext = () => {
     setTrackIndex((currentTrack) =>
       currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
-    );
+    );  
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function AudioControler() {
     }
 
   }, [isPlaying]);
-  console.log(playlist.length)
+  // console.log(playlist.length)
   if (playlist.length === 0) {
     return <div className="controler">
             <AudioPlayer
@@ -51,20 +51,31 @@ export default function AudioControler() {
 
   return (
     <div className="controler">
+{    console.log(playlist)}
+{    console.log(playlist[trackIndex])}
+{    console.log("SRC:  " + playlist[trackIndex].audioSrc)}
+{    console.log("URL:  " + playlist[trackIndex].audioUrl)}
+
+{/* }  {  console.log(playlist[0])} */}
+  {/* {  console.log(playlist.sounds)} */}
+  {/* {  console.log(playlist.sounds["0"])} */}
+
+{/* {    console.log("1231321312")} */}
     <AudioPlayer
       style={{ borderRadius: "1rem", color: "black", background: "#FFFFFF" }}
       playing={isPlaying}
-      src={playlist[trackIndex].audioSrc}
+      src={playlist[trackIndex].audioSrc ? playlist[trackIndex].audioSrc : playlist[trackIndex].audioUrl}
       onCanPlay={false}
       onPlay={() => setIsPlaying(true)}
       onPause={() => setIsPlaying(false)}
       showSkipControls={true}
       showJumpControls={false}
-      header={`${playlist[trackIndex].title}`}
+      header={`${playlist[trackIndex] ? playlist[trackIndex].title : playlist[trackIndex].title}`}
       onClickPrevious={handleClickPrevious}
       onClickNext={handleClickNext}
       onEnded={handleClickNext}
       ref={player}
+      loop={true}
     />
     </div>
   );

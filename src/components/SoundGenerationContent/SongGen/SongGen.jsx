@@ -23,18 +23,10 @@ export function SongGen(props) {
 
   const { setPlaylist } = usePlaylist();
 
-  // const updatePlaylist = (playlist) => {
-  //   console.log("updating playlist", playlist);
-  //   const newPlaylist = playlist; // Новый плейлист, который нужно передать
-  //   setPlaylist(newPlaylist);
-  // };
-
   const handleClick = (playlist, number) => {
-    // Вызовите функцию myFunction с параметрами
+    
     console.log('song_click')
     console.log('playlist',playlist )
-    // props.onStartMusic(playlist, number);
-    // updatePlaylist(playlist.sounds);
   };
 
   return (

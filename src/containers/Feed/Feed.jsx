@@ -68,9 +68,6 @@ const Feed = (props) => {
 
             setUserSounds(userSounds); 
             setAISounds(aiSounds);
-            
-            // Обновляем состояние samples
-
         } catch (error) {
             console.error('Ошибка:', error);
         }
@@ -91,15 +88,12 @@ const Feed = (props) => {
         <div className="right-selection">
             <div className='container-new'>
                 <span className='text-new'>Новое</span>
-                {/* <ImageSection/> 
-                ToDo: ReNew Feed */}
+
                 <div className='cards'>
                     <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
                         <span className='text-class'>Создание звуков вместе с AI</span>
                     </div>
-                    <div className='nekirkorov'>
-                        <span className='text-class'>Редактор звуков</span>
-                    </div>
+                    
                 </div>
 
             </div>

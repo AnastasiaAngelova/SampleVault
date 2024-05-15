@@ -7,7 +7,7 @@ const Cardkit2 = (props) => {
   if (!props.trendSounds || props.trendSounds.length === 0) {
     return (
         <div className="loader-container2">
-            <div className="loader22"></div>
+            Здесь будут ваши сгенерированные звуки
         </div>
     );
   }

@@ -11,7 +11,7 @@ const Generation = ({ onGenerate }) => {
 
     const handleLeftChange = (e) => {
         const newValue = parseInt(e.target.value, 10) || 0;
-        setLeftValue(Math.max(0, Math.min(60, newValue)).toString());
+        setLeftValue(Math.max(0, Math.min(20, newValue)).toString());
       };
       
       const handleRightChange = (e) => {

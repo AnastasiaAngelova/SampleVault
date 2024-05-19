@@ -4,10 +4,12 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install -g npm@10.8.0
-RUN npm install serve
+EXPOSE 3000
+
+RUN npm install -g npm@10.7.0
+RUN npm install
 RUN export NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
-RUN serve -s build
+RUN npm install -g serve
 
-EXPOSE 3000
+CMD ["serve", "-s", "build"]

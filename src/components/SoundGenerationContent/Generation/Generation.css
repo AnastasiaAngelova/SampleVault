@@ -4,29 +4,12 @@
     align-items: flex-end;
     padding: 0px;
     gap: 16px;
-    
-    position: top;
-    width: 1112px;
-    height: 206px;
-    left: 464px;
-    top: 125px;
 }
 
 .generation-input-frame {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding-top: 30px; */
-    padding: 0 px;
-
-    width: 760px;
-    height: 206px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .generation-right-frame{

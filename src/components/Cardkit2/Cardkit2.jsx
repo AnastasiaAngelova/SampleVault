@@ -13,7 +13,7 @@ const Cardkit2 = (props) => {
   }
   
   return (
-    <div className="cardkit-container2">
+    <div className="cardkit-container">
         {console.log('CK2 ',props)}
         {props.trendSounds.map((sound, index) => (
                     <Song2 playlist={props} number={index+1}  {...sound}  />

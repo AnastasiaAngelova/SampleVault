@@ -6,7 +6,7 @@
     gap: 10px;
     display: flex;
     align-items: center;
-    width: 1100px;
+    /* width: 1100px; */
   }
 
 .song-container2:hover {
@@ -22,6 +22,7 @@
 
   .song-number {
     gap: 10px;
+    width: 15px;
     display: flex;
     padding: 10px;
     align-items: center;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./SoundGen.css"
 
 import Generation from "../../components/SoundGenerationContent/Generation/Generation"
-import SongGenKit from '../../components/SoundGenerationContent/SongKit/SongGenKit'
 
 import Cardkit2 from '../../components/Cardkit2/Cardkit2';
 
@@ -12,7 +11,6 @@ const SampleGen = () => {
     const [genSounds, setGenSounds] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
-
 
     const handleGetGenSounds = async () => {
         try {
@@ -61,20 +59,22 @@ const SampleGen = () => {
 
     };
 
-    const handleGenerateSound = async (inputText, generationMethod) => {
+    const handleGenerateSound = async (inputText, duration, generationMethod) => {
         setShowLoader(true);
         setLoading(true); // Устанавливаем состояние загрузки в true при начале запроса
-        console.log('generationMethod:', generationMethod);
-        console.log('input filetext:', inputText);
+        console.log('generationMethod: ', generationMethod);
+        console.log('input filetext: ', inputText);
+        console.log('duration: ', duration);
     
         try {
             try {
-
-                if (generationMethod == 'option1') {
+                if (generationMethod === 'option1') {
 
                     const requestBody = {
-                        text: inputText
+                        text: inputText,
+                        duration: duration
                     };
+
                     const response = await fetch(`https://samplevault.ru/api/v1/sounds/generate_by_text`, {
                         body: JSON.stringify(requestBody),
                         method: 'POST',
@@ -86,7 +86,7 @@ const SampleGen = () => {
                     });
 
                     if (!response) {
-                        throw new Error('Ошибка при получении списка сэмплов');
+                        throw new Error('Ошибка при попытке сгенерировать по промпту');
                     }
 
                     if (response.status === 401) {
@@ -95,9 +95,10 @@ const SampleGen = () => {
 
                 }
 
-                if (generationMethod == 'option2') {
+                if (generationMethod === 'option2') {
                     const requestBody = {
-                        // image_url: inputText
+                        image_url: inputText,
+                        duration: duration
                     };
                     
                     const response = await fetch(`https://samplevault.ru/api/v1/sounds/generate_by_image_url`, {
@@ -111,7 +112,7 @@ const SampleGen = () => {
                     });
 
                     if (!response) {
-                        throw new Error('Ошибка при получении списка сэмплов');
+                        throw new Error('Ошибка при попытке генерации по картинке');
                     }
 
                     if (response.status === 401) {
@@ -120,9 +121,10 @@ const SampleGen = () => {
 
                 }
 
-                if (generationMethod == 'option3') {
+                if (generationMethod === 'option3') {
                     const requestBody = {
-                        // audio_url: inputText
+                        audio_url: inputText,
+                        duration: duration
                     };
                     const response = await fetch(`https://samplevault.ru/api/v1/sounds/generate_by_audio_url`, {
                         body: JSON.stringify(requestBody),
@@ -135,7 +137,7 @@ const SampleGen = () => {
                     });
 
                     if (!response) {
-                        throw new Error('Ошибка при получении списка сэмплов');
+                        throw new Error('Ошибка при попытке генерации по аудио');
                     }
 
                     if (response.status === 401) {
@@ -145,8 +147,8 @@ const SampleGen = () => {
                 }
 
                 } catch (error) {
-                    console.error('Ошибка при получении списка сэмплов:', error);
-                } 
+                    console.error('Ошибка при генерации:', error);
+            } 
 
             
             const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {

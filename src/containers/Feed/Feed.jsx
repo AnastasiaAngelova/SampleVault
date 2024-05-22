@@ -90,10 +90,11 @@ const Feed = (props) => {
                 <span className='text-new'>Новое</span>
 
                 <div className='cards'>
-                    <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
+                    {/* <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
                         <span className='text-class'>Создание звуков вместе с AI</span>
-                    </div>
-                    
+                    </div> */}
+                    <img src="ImageSection/choose_ai_card.png" className='kirkorov'></img>
+                    <img src="ImageSection/choose_sample_card.png" className='kirkorov'></img>
                 </div>
 
             </div>

@@ -118,6 +118,7 @@ const Generation = ({ onGenerate }) => {
                 <button className='generation-button' onClick={() => {
                                                                 const durationInSeconds = `${leftValue}.${rightValue}`;
                                                                 onGenerate(inputText, durationInSeconds, generationMethod);
+                                                                
                                                                 }}>
                                                             Сгенерировать звук 
                 </button>

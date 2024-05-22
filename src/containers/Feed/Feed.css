@@ -69,18 +69,16 @@
 
 .cards {
     display: flex;
-    padding: 10px;
+    padding: 10px 0 10px 0px;
     gap: 26px;
   }
   
   .kirkorov {
-    padding: 10px;
     border-radius: 25px;
-    
-    width: 75vw;
-    height: 40vh;
-    
-    background: #f02222;
+    max-width: 30vw;
+    max-height: 36vh;
+    filter: brightness(1); /* По умолчанию картинка не затемнена */
+    transition: filter 0.2s;
   }
 
 .text-class {
@@ -95,19 +93,12 @@
 
 }
 
-.nekirkorov {
-    padding: 10px;
-    border-radius: 25px;
-    
-    background: color(display-p3 0.57 0.57 0.57);
-}
-
   .kirkorov:hover {
-    background: #c51b1b; 
+    filter: brightness(0.7); 
 }
 
-.nekirkorov:hover {
-    
-    background: #636363;
-}
 
+.right-selection { 
+    margin: 0 6vw auto;
+    max-width: 60vw;
+}

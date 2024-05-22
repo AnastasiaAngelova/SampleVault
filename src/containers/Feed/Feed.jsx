@@ -111,8 +111,8 @@ const Feed = (props) => {
                     {/* <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
                         <span className='text-class'>Создание звуков вместе с AI</span>
                     </div> */}
-                    <img src="ImageSection/choose_ai_card.png" className='kirkorov'></img>
-                    <img src="ImageSection/choose_sample_card.png" className='kirkorov'></img>
+                    <img src="ImageSection/choose_ai_card.png" className='kirkorov' onClick={() => onMenuClick('/generate')}></img>
+                    <img src="ImageSection/choose_sample_card.png" className='kirkorov' onClick={() => onMenuClick('/sound_collection')}></img>
                 </div>
 
             </div>

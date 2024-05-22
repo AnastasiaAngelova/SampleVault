@@ -50,7 +50,7 @@ const SoundCollection = () => {
             .catch(error => console.error('Error downloading file:', error));
     };
 
-    const handleLike = async (sample) => {
+    /*const handleLike = async (sample) => {
         try {
             const endpoint = sample.cur_liked
                 ? `https://samplevault.ru/api/v1/sounds/dislike/${sample.id}`
@@ -85,7 +85,7 @@ const SoundCollection = () => {
             console.error(`Ошибка при ${sample.cur_liked ? 'удалении из' : 'добавлении в'} избранное:`, error);
         }
     };
-
+*/
     const handleGetAllSamples = async (event) => {
         try {
             const response = await fetch('https://samplevault.ru/api/v1/sounds', {
@@ -138,7 +138,7 @@ const SoundCollection = () => {
                     mood: item.mood,
                     tonality: item.tonality,
                     tempo: item.tempo,
-                    cur_liked: likedData.some(likedItem => likedItem.id === item.id)
+                    //cur_liked: likedData.some(likedItem => likedItem.id === item.id)
                 };
             });
 
@@ -387,12 +387,12 @@ const SoundCollection = () => {
                     <div className="elementcol">{sample.tempo}</div>
 
                     <img
-                        src={sample.cur_liked ? 'icons/dark_star.svg' : 'icons/star.svg'}
+                        src={/*sample.cur_liked ? 'icons/dark_star.svg' : */'icons/star.svg'}
                         alt="star"
                         className="song--control-img"
                         onClick={(e) => {
                             e.stopPropagation();
-                            handleLike(sample);
+                            //handleLike(sample);
                         }}
                     />
                     <img src={'icons/download.svg'} alt="download" className="song--control-img"

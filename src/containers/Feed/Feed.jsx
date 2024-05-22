@@ -1,15 +1,48 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Feed.css"
-
 import Cardkit from '../../components/FeedContent/Cardkit/Cardkit';
 
 const Feed = (props) => {
-
     const [userSounds, setUserSounds] = useState([]);
     const [aiSounds, setAISounds] = useState([]);
+    const [user, setUser] = useState(null);
 
+    const handleAuthUser = async () => {
+        try {
+            const response = await fetch('https://samplevault.ru/api/v1/auth', {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include',
+            });
+
+            if (!response) {
+                throw new Error('Ошибка при проверки авторизации');
+            }
+
+            const text = await response.text();
+            if (text.trim() === '') {
+                console.log('Ответ пустой');
+                return;
+            }
+
+            const data = JSON.parse(text);
+            console.log('пользователь: ', data);
+
+            console.log("status code: ", response.status)
+            if (response.status === 200) {
+                setUser(data);
+            }
+            if (response.status === 401) {
+                setUser({
+                    id: '',
+                    username: '',
+                })
+            }
+        } catch (error) {
+            console.error('Ошибка при проверки авторизации:', error);
+        }
+    };
 
     const handleGetSounds = async () => {
         try {
@@ -40,21 +73,24 @@ const Feed = (props) => {
                 console.log('Список сэмплов пуст');
             }
 
-            const likedResponse = await fetch('https://samplevault.ru/api/v1/liked-sounds', {
-                method: 'GET',
-                credentials: 'include',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            });
+            let likedData = [];
+            if (user && user.id) {
+                const likedResponse = await fetch('https://samplevault.ru/api/v1/liked-sounds', {
+                    method: 'GET',
+                    credentials: 'include',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
 
-            if (!likedResponse.ok) {
-                throw new Error('Ошибка при получении списка лайков');
+                if (!likedResponse.ok) {
+                    throw new Error('Ошибка при получении списка лайков');
+                }
+
+                likedData = await likedResponse.json();
+                console.log('Liked sounds: ', likedData);
             }
-
-            const likedData = await likedResponse.json();
-            console.log('Liked sounds: ', likedData);
 
             const userSounds = data.map(item => {
                 return {
@@ -65,7 +101,7 @@ const Feed = (props) => {
                     title: item.title,
                     cur_liked: likedData.some(likedItem => likedItem.id === item.id)
                 };
-            })
+            });
 
             const text1 = await response1.text();
             const data1 = JSON.parse(text1);
@@ -81,7 +117,6 @@ const Feed = (props) => {
                 };
             });
 
-
             console.log(typeof (userSounds))
 
             setUserSounds(userSounds);
@@ -89,10 +124,10 @@ const Feed = (props) => {
         } catch (error) {
             console.error('Ошибка:', error);
         }
-
     };
 
     useEffect(() => {
+        handleAuthUser();
         handleGetSounds();
     }, []);
 
@@ -108,9 +143,6 @@ const Feed = (props) => {
                 <span className='text-new'>Новое</span>
 
                 <div className='cards'>
-                    {/* <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
-                        <span className='text-class'>Создание звуков вместе с AI</span>
-                    </div> */}
                     <img src="ImageSection/choose_ai_card.png" className='kirkorov' onClick={() => onMenuClick('/generate')}></img>
                     <img src="ImageSection/choose_sample_card.png" className='kirkorov' onClick={() => onMenuClick('/sound_collection')}></img>
                 </div>
@@ -119,7 +151,6 @@ const Feed = (props) => {
             <div className='container-new'>
                 <span className='text-new'>В тренде</span>
                 <div className="trend-block">
-
                     <div className="trend-block_box">
                         <h1 className="container-text">Звуки пользователей</h1>
                         <Cardkit trendSounds={userSounds}></Cardkit>

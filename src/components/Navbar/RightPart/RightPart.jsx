@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./RightPart.css";
 import Drop from "../Drop/Drop"
 import CabinetDropdown from "../../CabinetDropdown/CabinetDropdown";
+import { Link } from 'react-router-dom';
 // import  from "../../DragDrop/DragDrop";
 
 
@@ -64,11 +65,32 @@ const RightPart = () => {
         <div className="right-section">
             <Drop/>
             <div className="imgd" onClick={toggleDropdown}>
-                <img className='icon-right' src={user.id !== '' ? "icons/not-anonim.svg" : "icons/anonim.svg"} alt={user.id !== '' ? "Авторизован" : "Не авторизован"}/>
-                <img className='chevron' src={"icons/Chevron/chevron-down.svg"}  alt="Иконка дропдавна"/>
-                {isDropdownOpen && <CabinetDropdown
-                    user={user}
-                />}
+                {user.id == '' ? (<a
+                        href="/auth_popup"
+                        onClick={(e) => {
+                            window.location.href = '/auth_popup';
+                        }}
+                        style={{ textDecoration: 'underline', color: 'crimson', font_family: 'Montserrat',
+                        font_size: '20px',
+                        font_weight: '500' }}
+                        >
+                        Войти
+                    </a>
+                ) : (
+                    <>
+                    <img
+                        className="icon-right"
+                        src="icons/not-anonim.svg"
+                        alt="Авторизован"
+                    />
+                    <img
+                        className="chevron"
+                        src="icons/Chevron/chevron-down.svg"
+                        alt="Иконка дропдавна"
+                    />
+                    {isDropdownOpen && <CabinetDropdown user={user} />}
+                    </>
+                )}
             </div>
         </div>
     );

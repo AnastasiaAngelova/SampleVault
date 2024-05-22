@@ -6,9 +6,9 @@
 }
 
 .collection-container {
-    flex: auto;
-    padding-right: 5%;
-    margin: 5px;
+  flex: auto;
+  margin: 0 6vw auto;
+  max-width: 60vw;
 }
 
 .column-container {

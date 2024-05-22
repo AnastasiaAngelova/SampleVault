@@ -36,11 +36,19 @@ const Drop = ({onMenuClick}) => {
                             {/* <span className='txt' style={{color:"black"}}> </span> */}
                             <span className='txt' style={{color:"red"}}>AI</span>
                         </button>
-                        <button className="btn-bottom">
+                        {/* <button className="btn-bottom">
                         <spam className="txt" style={{color:"#478DF7"}}>Новый трек в редакторе</spam>
+                        </button> */}
+                        <button className="btn-bottom">
+                            <div className="bl">
+                                <img className="chevron" src={"icons/add-circle.svg"} alt="My SVG" />
+                            </div>
+                            <div className="br">
+                            <span className='txt' onClick={handleMenuSelectUp} style={{color:"black", textAlign:"center", alignItems:"center",justifyContent:"center"}}>Загрузить новый трек</span>
+                            </div>
                         </button>
                    </div>
-                   <div className="own-sound">
+                   {/* <div className="own-sound">
                      <button className="btn2">
                         <div className="bl">
                             <img className="chevron" src={"icons/add-circle.svg"} alt="My SVG" />
@@ -49,7 +57,7 @@ const Drop = ({onMenuClick}) => {
                         <span className='txt' onClick={handleMenuSelectUp} style={{color:"black", textAlign:"center", alignItems:"center",justifyContent:"center"}}>Загрузить новый трек</span>
                         </div>
                      </button>
-                   </div>
+                   </div> */}
                 </ul>
             </nav>
         </div>

@@ -1,86 +1,94 @@
 .song-container2 {
-    padding-right: 10px;
-    padding-top: 5px ;
-    padding-bottom: 5px ;
-    border-radius: 10px;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    /* width: 1100px; */
-  }
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  /* width: 1100px; */
+}
 
 .song-container2:hover {
   background-color: #D9D9D9;
 }
 
-  .song-info {
-    gap: 5px;
-    display: flex;
-    align-items: center;
-    width: -webkit-fill-available;
-  }
+.song-info {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+}
 
-  .song-number {
-    gap: 10px;
-    width: 15px;
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
+.song-number {
+  gap: 10px;
+  width: 15px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  .song-number-text {
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 24.38px;
-    text-align: left;
+.song-number-text {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24.38px;
+  text-align: left;
 
-  }
-  
-  .song-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-  }
-  
-  .song-details {
-    padding-left: 10px;
-    flex-grow: 1;
-  }
-  
-  .song-title {
-    font-family: Montserrat;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 22.5px;
-    text-align: left;
+}
 
-  }
-  
-  .song-description {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 18px;
-    text-align: left;
-    color:  #989898;
+.song-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
 
-  }
-  
-  .song-control-img {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    position: relative;
-    align-items: flex-start;
-    flex-shrink: 0;
-  }
+.song-details {
+  padding-left: 10px;
+  flex-grow: 1;
+}
+
+.song-title {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22.5px;
+  text-align: left;
+
+}
+
+.song-description {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  color: #989898;
+
+}
+
+.song-control-img {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
 
 
-  .song-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-  }
+.song-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.song--control-img.liked {
+  /*background-color: #D9D9D9;
+  /*filter: invert(1); /* Example to invert the colors, adjust as needed */
+  filter: grayscale(100%);
+  /* This will turn the star icon to gray */
+
+}

@@ -40,6 +40,22 @@ const Feed = (props) => {
                 console.log('Список сэмплов пуст');
             }
 
+            const likedResponse = await fetch('https://samplevault.ru/api/v1/liked-sounds', {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (!likedResponse.ok) {
+                throw new Error('Ошибка при получении списка лайков');
+            }
+
+            const likedData = await likedResponse.json();
+            console.log('Liked sounds: ', likedData);
+
             const userSounds = data.map(item => {
                 return {
                     audioSrc: item.audio_url,
@@ -47,6 +63,7 @@ const Feed = (props) => {
                     author: 'author',
                     duration: item.duration,
                     title: item.title,
+                    cur_liked: likedData.some(likedItem => likedItem.id === item.id)
                 };
             })
 
@@ -60,13 +77,14 @@ const Feed = (props) => {
                     author: 'author',
                     duration: item.duration,
                     title: item.title,
+                    cur_liked: likedData.some(likedItem => likedItem.id === item.id)
                 };
             });
 
 
-            console.log(typeof(userSounds))
+            console.log(typeof (userSounds))
 
-            setUserSounds(userSounds); 
+            setUserSounds(userSounds);
             setAISounds(aiSounds);
         } catch (error) {
             console.error('Ошибка:', error);
@@ -78,7 +96,7 @@ const Feed = (props) => {
         handleGetSounds();
     }, []);
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const onMenuClick = (route) => {
         navigate(route);
@@ -93,20 +111,20 @@ const Feed = (props) => {
                     <div className='kirkorov' onClick={() => onMenuClick('/generate')}>
                         <span className='text-class'>Создание звуков вместе с AI</span>
                     </div>
-                    
+
                 </div>
 
             </div>
             <div className='container-new'>
                 <span className='text-new'>В тренде</span>
                 <div className="trend-block">
-                    
+
                     <div className="trend-block_box">
                         <h1 className="container-text">Звуки пользователей</h1>
                         <Cardkit trendSounds={userSounds}></Cardkit>
                     </div>
                     <div className="trend-block_box">
-                    <h1 className="container-text">Созданные совместно с AI</h1>
+                        <h1 className="container-text">Созданные совместно с AI</h1>
                         <Cardkit trendSounds={aiSounds}></Cardkit>
                     </div>
                 </div>

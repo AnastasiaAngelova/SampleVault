@@ -41,23 +41,39 @@ const SampleGen = () => {
                 console.log('Список сэмплов пуст');
             }
 
-            const Sounds = data.map(item => {
-                return {
-                    imageUrl: item.icon_url,
-                    author: 'author',
-                    duration: item.duration,
-                    title: item.title,
-                    audioUrl: item.audio_url
-                };
+            const likedResponse = await fetch('https://samplevault.ru/api/v1/liked-sounds', {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             });
 
-            setGenSounds(Sounds); 
+            if (!likedResponse.ok) {
+                throw new Error('Ошибка при получении списка лайков');
+            }
 
-        } catch (error) { 
+            const likedData = await likedResponse.json();
+            console.log('Liked sounds: ', likedData);
+
+            const Sounds = data.map(item => ({
+                id: item.id,
+                imageUrl: item.icon_url,
+                author: 'author',
+                duration: item.duration,
+                title: item.title,
+                audioUrl: item.audio_url,
+                cur_liked: likedData.some(likedItem => likedItem.id === item.id)
+            }));
+
+            setGenSounds(Sounds);
+
+        } catch (error) {
             console.error('Ошибка:', error);
         }
-
     };
+
 
     const handleGenerateSound = async (inputText, duration, generationMethod) => {
         setShowLoader(true);
@@ -65,7 +81,7 @@ const SampleGen = () => {
         console.log('generationMethod: ', generationMethod);
         console.log('input filetext: ', inputText);
         console.log('duration: ', duration);
-    
+
         try {
             try {
                 if (generationMethod === 'option1') {
@@ -100,7 +116,7 @@ const SampleGen = () => {
                         image_url: inputText,
                         duration: duration
                     };
-                    
+
                     const response = await fetch(`https://samplevault.ru/api/v1/sounds/generate_by_image_url`, {
                         body: JSON.stringify(requestBody),
                         method: 'POST',
@@ -146,11 +162,11 @@ const SampleGen = () => {
 
                 }
 
-                } catch (error) {
-                    console.error('Ошибка при генерации:', error);
-            } 
+            } catch (error) {
+                console.error('Ошибка при генерации:', error);
+            }
 
-            
+
             const response = await fetch('https://samplevault.ru/api/v1/sounds/last_generated', {
                 method: 'GET',
                 credentials: 'include',
@@ -161,7 +177,7 @@ const SampleGen = () => {
             });
 
             setLoading(false);
-            
+
             setShowLoader(false);
 
             if (!response.ok) {
@@ -205,7 +221,7 @@ const SampleGen = () => {
                 <div className='sample-gen-text-recent-wrapper'>
                     <span className='sample-gen-text-recent'>Мои последние сгенерированные звуки: </span>
                 </div>
-                
+
                 <Cardkit2 className="ck" trendSounds={genSounds}></Cardkit2>
 
             </div>

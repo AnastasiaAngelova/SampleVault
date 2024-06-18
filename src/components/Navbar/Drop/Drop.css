@@ -1,4 +1,5 @@
 .menu-button {
+    position: relative; /* добавьте эту строку */
     color: white;
     margin-left: auto;
     width: 245px;
@@ -7,14 +8,11 @@
     margin-right: 10px;
     border: 0;
     border-radius: 10px;
-    /* background-color: #6CA4F9; */
     background: linear-gradient(#6CA4F9, #478DF7);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    
 }
 
 .menu{
@@ -34,6 +32,13 @@
     transform: traslateY(-10px);
     visibility: hidden;
     transition: 0.8s;
+}
+
+@media (max-width: 650px) {
+    .menu {
+        right: 0; /* Прилепляем к правой границе на мобильных устройствах */
+        width: auto; /* Убираем фиксированную ширину, чтобы меню могло адаптироваться */
+    }
 }
 
 .menu.active{

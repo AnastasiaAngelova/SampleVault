@@ -64,10 +64,12 @@ const SampleGen = () => {
                 duration: item.duration,
                 title: item.title,
                 audioUrl: item.audio_url,
-                cur_liked: likedData.some(likedItem => likedItem.id === item.id)
+                cur_liked: Array.isArray(likedData) && likedData.some(likedItem => likedItem.id === item.id)
             }));
-
+            
             setGenSounds(Sounds);
+
+            console.log(genSounds)
 
         } catch (error) {
             console.error('Ошибка:', error);

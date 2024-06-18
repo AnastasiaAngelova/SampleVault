@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./Feed.css"
+import "./Feed.css";
 import Cardkit from '../../components/FeedContent/Cardkit/Cardkit';
 
 const Feed = (props) => {
@@ -29,7 +29,7 @@ const Feed = (props) => {
             const data = JSON.parse(text);
             console.log('пользователь: ', data);
 
-            console.log("status code: ", response.status)
+            console.log("status code: ", response.status);
             if (response.status === 200) {
                 setUser(data);
             }
@@ -37,7 +37,7 @@ const Feed = (props) => {
                 setUser({
                     id: '',
                     username: '',
-                })
+                });
             }
         } catch (error) {
             console.error('Ошибка при проверки авторизации:', error);
@@ -46,7 +46,7 @@ const Feed = (props) => {
 
     const handleGetSounds = async () => {
         try {
-            console.log('trying to fetch')
+            console.log('trying to fetch');
             const response = await fetch('https://samplevault.ru/api/v1/sounds/random', {
                 method: 'GET',
                 mode: 'cors'
@@ -55,7 +55,6 @@ const Feed = (props) => {
                 method: 'GET',
                 mode: 'cors'
             });
-            // console.log(response)
             if (!response) {
                 throw new Error('Ошибка при получении списка сэмплов');
             }
@@ -117,8 +116,6 @@ const Feed = (props) => {
                 };
             });
 
-            console.log(typeof (userSounds))
-
             setUserSounds(userSounds);
             setAISounds(aiSounds);
         } catch (error) {
@@ -141,12 +138,10 @@ const Feed = (props) => {
         <div className="right-selection">
             <div className='container-new'>
                 <span className='text-new'>Новое</span>
-
                 <div className='cards'>
-                    <img src="ImageSection/choose_ai_card.png" className='kirkorov' onClick={() => onMenuClick('/generate')}></img>
-                    <img src="ImageSection/choose_sample_card.png" className='kirkorov' onClick={() => onMenuClick('/sound_collection')}></img>
+                    <img src="ImageSection/choose_ai_card.png" className='kirkorov' onClick={() => onMenuClick('/generate')} alt="AI Card" />
+                    <img src="ImageSection/choose_sample_card.png" className='kirkorov' onClick={() => onMenuClick('/sound_collection')} alt="Sample Card" />
                 </div>
-
             </div>
             <div className='container-new'>
                 <span className='text-new'>В тренде</span>
@@ -166,3 +161,4 @@ const Feed = (props) => {
 };
 
 export default Feed;
+

@@ -18,6 +18,17 @@ width: 24px;
 height: 24px;
 }
 
+/* Dropdown.css */
+@media only screen and (max-width: 600px) {
+    .dropdown-text, .generation-dropdown {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+
 .generation-dropdown {
     box-sizing: border-box;
 

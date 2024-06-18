@@ -17,3 +17,15 @@ top: 361px;
 
 
 }
+
+
+/* SongGenKit.css */
+@media only screen and (max-width: 600px) {
+    .songgen-kit-container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+}

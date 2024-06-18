@@ -25,7 +25,7 @@ const DropProfile = ({ onMenuClick }) => {
                     <span className='txt'>Создать</span>
                 </div>
                 <div className="right">
-                    <img className="chevron" src={"icons/chevron/chevron-down.svg"} alt="" />
+                    <img className="chevron" src={"icons/Chevron/chevrondowni141-yg63.svg"} alt="" />
                 </div>
             </button>
             <nav className={`menu ${isOpen ? "active" : ""}`}>

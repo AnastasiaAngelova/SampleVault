@@ -6,10 +6,24 @@ import DragDrop from '../../DragDrop/DragDrop';
 const Generation = ({ onGenerate }) => {
     const [generationMethod, setGenerationMethod] = useState("option1"); // Состояние для хранения выбранного метода генерации
     const [inputText, setInputText] = useState('');
+    const [leftValue, setLeftValue] = useState('');
+    const [rightValue, setRightValue] = useState('');
+
+    const handleLeftChange = (e) => {
+        const newValue = parseInt(e.target.value, 10) || 0;
+        setLeftValue(Math.max(0, Math.min(20, newValue)).toString());
+      };
+      
+      const handleRightChange = (e) => {
+        const newValue = parseInt(e.target.value, 10) || 0;
+        setRightValue(Math.max(0, Math.min(60, newValue)).toString());
+      };
+
 
     // Обработчик изменения значения в выпадающем списке
     const handleDropdownChange = (selectedValue) => {
         setGenerationMethod(selectedValue);
+        setInputText('');
     };
 
     // Функция для получения содержимого поля ввода в зависимости от выбранного метода генерации
@@ -17,6 +31,7 @@ const Generation = ({ onGenerate }) => {
         switch (generationMethod) {
             case "option1":
                 return (
+
                     <textarea
                         type="text"
                         className='generation-input'
@@ -33,9 +48,10 @@ const Generation = ({ onGenerate }) => {
                         label="Выберите или перетащите сюда изображение"
                         pathtoicon={"icons/images-light.svg"}
                         alt={"images-light"}
+                        set_file_var={setInputText}
                     />
                 );
-            default:
+            case "option3":
                 const audio_types = ["WAV", "MP3"];
                 return (
                     <DragDrop
@@ -43,6 +59,7 @@ const Generation = ({ onGenerate }) => {
                         label="Выберите или перетащите сюда аудиофайл"
                         pathtoicon={"icons/icon-park-outline.svg"}
                         alt={"icon-park-outline"}
+                        set_file_var={setInputText}
                     />);
         }
     };
@@ -79,22 +96,32 @@ const Generation = ({ onGenerate }) => {
                     <div className='generation-right-top-pick-wrapper'>
                         <Dropdown onChange={handleDropdownChange} />
                         <div className='generation-duration'>
-                            <textarea disabled
+                            <input type="text"
                                 className='generation-duration-left-text'
-                                placeholder="00"
+                                placeholder="05"
                                 maxlength="2"
+                                value={leftValue}
+                                onChange={handleLeftChange}
                             />
                             <div className='generation-duration-text'>:</div>
-                            <textarea disabled
+                            <input type="text"
                                 className='generation-duration-right-text'
                                 placeholder="00"
                                 maxlength="2"
+                                value={rightValue}
+                                onChange={handleRightChange}
                             />
 
                         </div>
                     </div>
                 </div>
-                <button className='generation-button' onClick={() => onGenerate(inputText, generationMethod)}>Сгенерировать звук</button>
+                <button className='generation-button' onClick={() => {
+                                                                const durationInSeconds = `${leftValue}.${rightValue}`;
+                                                                onGenerate(inputText, durationInSeconds, generationMethod);
+                                                                
+                                                                }}>
+                                                            Сгенерировать звук 
+                </button>
             </div>
         </div>
 

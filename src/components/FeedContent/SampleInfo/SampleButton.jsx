@@ -32,7 +32,8 @@ export function SampleButton({imageUrl, sampleUrl, onButtonClick}) {
         
         <div className={
             isPlaying ? "song-image-button-active" : "song-image-button"
-          } onClick={ HandleButtonClick} >
+        //   } onClick={ HandleButtonClick} >
+        }>
             <div className="song-image">
                 <img src={imageUrl} alt={imageUrl} className="song-image" />
             </div>

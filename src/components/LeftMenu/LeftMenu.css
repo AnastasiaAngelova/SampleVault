@@ -1,3 +1,5 @@
+/* LeftMenu.css */
+
 .left-selection {
     padding-top: 10px;
     align-items: center;
@@ -6,13 +8,12 @@
     width: 15vw;
 }
 
-.left-selection_button{
+.left-selection_button {
     display: flex;
     margin: 0px 15px;
-    border-radius:10px;
+    border-radius: 10px;
     padding: 10px;
     height: 80px;
-    
     text-align: left;
     align-items: center;
     justify-content: left;
@@ -20,25 +21,22 @@
 
 .left-selection_button:hover {
     background: #478DF7;
-  }
-  
+}
 
-
-.left-selection_button_img{
+.left-selection_button_img {
     width: 34px;
     height: 34px;
     display: flex;
     border-radius: 10px;
     padding: 5px;
-    background-color: #C8DDFD
+    background-color: #C8DDFD;
 }
 
-.left-selection_button:hover .left-selection_button_img{
+.left-selection_button:hover .left-selection_button_img {
     background: #EDF4FF;
 }
 
 .left-selection_txt {
-
     font-family: Montserrat;
     font-size: 16px;
     font-weight: 500;
@@ -46,12 +44,19 @@
     text-align: left;
     color: #1A1A1A;
     margin: 10px;
-    
-    }
+}
 
-@media screen and (max-width: 480px) {
-    .left-selection {
+@media screen and (max-width: 580px) {
+    /* .left-selection {
         order: -1;
         width: 100%;
+    } */
+
+    .left-selection_txt {
+        display: none !important; /* Скрыть текст */
+    }
+
+    .left-selection_button {
+        justify-content: center; /* Центрировать иконки */
     }
 }

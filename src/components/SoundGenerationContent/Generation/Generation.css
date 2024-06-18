@@ -4,29 +4,12 @@
     align-items: flex-end;
     padding: 0px;
     gap: 16px;
-    
-    position: top;
-    width: 1112px;
-    height: 206px;
-    left: 464px;
-    top: 125px;
 }
 
 .generation-input-frame {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* padding-top: 30px; */
-    padding: 0 px;
-
-    width: 760px;
-    height: 206px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .generation-right-frame{
@@ -131,6 +114,38 @@
     order: 0;
     flex-grow: 0;
 }
+
+/* Generation.css */
+@media only screen and (max-width: 600px) {
+    .generation-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .generation-input-frame, .generation-right-frame {
+        width: 100%;
+        padding: 0;
+    }
+
+    .generation-input {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .generation-right-top-wrapper, .generation-right-top-pick-wrapper, .generation-button {
+        width: 100%;
+    }
+
+    .generation-button {
+        height: 50px;
+        padding: 10px 20px;
+    }
+}
+
 
 .generation-input-logo-section {
     display: flex;

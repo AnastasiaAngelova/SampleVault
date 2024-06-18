@@ -16,6 +16,22 @@
     flex-grow: 0;
 }
 
+@media only screen and (max-width: 600px) {
+    .song-gen-container {
+        flex-direction: column;
+        width: 100%;
+        
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .song-gen-number, .song-gen-info, .song-gen-details, .song-gen-equalizer, .song-gen-button-wrapper {
+        width: 100%;
+    }
+}
+
+
+
 .song-gen-container:hover {
     /* Frame 160 */
 
